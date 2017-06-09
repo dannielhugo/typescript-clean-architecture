@@ -6,7 +6,7 @@ export class AccountBusiness {
     private accountService: AccountService
   ) {}
 
-  getAll(): Account[] {
+  getAll(): Promise<Account[]> {
     return this.accountService.getAll();
   }
 }

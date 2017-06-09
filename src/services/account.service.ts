@@ -7,7 +7,9 @@ export class AccountService {
     new Account(3, 10020)
   ];
 
-  getAll(): Account[] {
-    return this.accounts.slice();
+  getAll(): Promise<Account[]> {
+    return new Promise((resolve, reject) => {
+      resolve(this.accounts.slice());
+    });
   }
 }

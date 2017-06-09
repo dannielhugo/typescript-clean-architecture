@@ -6,6 +6,8 @@ import * as bodyParser from 'body-parser';
 import { scopePerRequest, Request } from 'awilix-express';
 import { DependencyResolver } from './dependency-resolver';
 
+import { list as accountList } from './adapters/controllers/account.ctrl';
+
 // Creates and configures an ExpressJS web server.
 class App {
 
@@ -30,10 +32,12 @@ class App {
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
     this.container();
-    this.express.use((req: Request , res, next) => {
+    this.express.use((req: Request, res, next) => {
       req.container.registerValue({
         user: req.user
       });
+
+      next();
     });
   }
 
@@ -44,11 +48,7 @@ class App {
      * API endpoints */
     let router = express.Router();
     // placeholder route handler
-    router.get('/', (req, res, next) => {
-      res.json({
-        message: 'Hello World!'
-      });
-    });
+    router.get('/', accountList);
     this.express.use('/', router);
   }
 
