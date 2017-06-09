@@ -21,22 +21,16 @@ class App {
     this.routes();
   }
 
-  // Configure express dependency injections
-  private container(): void {
-    this.express.use(scopePerRequest(DependencyResolver.register()));
-  }
-
   // Configure Express middleware.
   private middleware(): void {
     this.express.use(logger('dev'));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
-    this.container();
+    this.express.use(scopePerRequest(DependencyResolver.register()));
     this.express.use((req: Request, res, next) => {
       req.container.registerValue({
         user: req.user
       });
-
       next();
     });
   }

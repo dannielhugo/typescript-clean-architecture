@@ -1,4 +1,4 @@
-import { createContainer, Lifetime, AwilixContainer, ResolutionMode } from 'awilix';
+import { createContainer, listModules, Lifetime, AwilixContainer, ResolutionMode } from 'awilix';
 
 export class DependencyResolver {
   static register(): AwilixContainer {
@@ -18,7 +18,9 @@ export class DependencyResolver {
         resolutionMode: ResolutionMode.CLASSIC,
         lifetime: Lifetime.SCOPED
       }
-    })
+    });
+
+    console.log(listModules(['./services/**/*.js']));
 
     return container;
   }
