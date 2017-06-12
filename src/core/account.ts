@@ -1,7 +1,4 @@
-export class Account {
-  constructor(
-    public id: number,
-    public amount: number
-  ) {}
-
+export interface Account {
+    id: number;
+    amount: number
 }

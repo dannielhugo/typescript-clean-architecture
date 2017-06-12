@@ -3,16 +3,15 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 
-import { scopePerRequest, Request } from 'awilix-express';
+import { scopePerRequest, makeInvoker, Request } from 'awilix-express';
 import { DependencyResolver } from './dependency-resolver';
-
-import { list as accountList } from './adapters/controllers/account.ctrl';
-
+import { AwilixContainer } from 'awilix';
 // Creates and configures an ExpressJS web server.
 class App {
 
   // ref to Express instance
   public express: express.Application;
+  public container: AwilixContainer;
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -26,7 +25,9 @@ class App {
     this.express.use(logger('dev'));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
-    this.express.use(scopePerRequest(DependencyResolver.register()));
+
+    this.container = DependencyResolver.register();
+    this.express.use(scopePerRequest(this.container));
     this.express.use((req: Request, res, next) => {
       req.container.registerValue({
         user: req.user
@@ -42,7 +43,8 @@ class App {
      * API endpoints */
     let router = express.Router();
     // placeholder route handler
-    router.get('/', accountList);
+    router.get('/', this.container.resolve('accountCtrl').list);
+
     this.express.use('/', router);
   }
 

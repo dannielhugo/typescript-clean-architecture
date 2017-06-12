@@ -1,27 +1,25 @@
+import * as debug from 'debug';
 import { createContainer, listModules, Lifetime, AwilixContainer, ResolutionMode } from 'awilix';
 
 export class DependencyResolver {
   static register(): AwilixContainer {
     const container = createContainer();
 
-    container.loadModules(['./services/**/*.js'], {
-      formatName: 'camelCase',
-      registrationOptions: {
-        resolutionMode: ResolutionMode.CLASSIC,
-        lifetime: Lifetime.SINGLETON
-      }
-    });
+    container.loadModules([
+      [`${__dirname}/business/**/*.js`, Lifetime.TRANSIENT],
+      [`${__dirname}/services/**/*.js`, Lifetime.SINGLETON],
+      [`${__dirname}/adapters/**/*.js`, Lifetime.TRANSIENT]
+    ], {
+        formatName: 'camelCase',
+        cwd: '.',
+        registrationOptions: {
+          resolutionMode: ResolutionMode.CLASSIC
+        }
+      });
 
-    container.loadModules(['./business/**/*.js'], {
-      formatName: 'camelCase',
-      registrationOptions: {
-        resolutionMode: ResolutionMode.CLASSIC,
-        lifetime: Lifetime.SCOPED
-      }
-    });
-
-    console.log(listModules(['./services/**/*.js']));
-
+    debug('app:dependency-resolver')(container.registrations);
     return container;
   }
+
+
 }

@@ -1,7 +1,7 @@
-import { AccountService } from '../services/account.service';
+import AccountService from '../services/account.service';
 import { Account } from '../core/account';
 
-export class AccountBusiness {
+export default class AccountBusiness {
   constructor(
     private accountService: AccountService
   ) {}

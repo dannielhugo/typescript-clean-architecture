@@ -1,10 +1,10 @@
 import { Account } from '../core/account';
 
-export class AccountService {
+export default class AccountService {
   private accounts: Account[] = [
-    new Account(1, 1000),
-    new Account(2, 0),
-    new Account(3, 10020)
+    { id: 1, amount: 1000 },
+    { id: 2, amount: 0 },
+    { id: 3, amount: 1002 }
   ];
 
   getAll(): Promise<Account[]> {
