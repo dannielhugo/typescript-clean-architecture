@@ -1,4 +1,4 @@
-import { Account } from '../../definitions/account';
+import { Account } from '../../definitions/entities/account';
 
 export default function(accountBusiness) {
   return {

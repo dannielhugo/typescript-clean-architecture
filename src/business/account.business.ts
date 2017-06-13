@@ -1,5 +1,5 @@
 import AccountService from '../services/account.service';
-import { Account } from '../definitions/account';
+import { Account } from '../definitions/entities/account';
 
 export default class AccountBusiness {
   constructor(

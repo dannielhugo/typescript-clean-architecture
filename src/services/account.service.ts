@@ -1,22 +1,17 @@
-import { Account } from '../definitions/account';
+import { Account } from '../definitions/entities/account';
+import { AccountRepository } from '../definitions/repositories/account.repository';
 
 export default class AccountService {
-  private accounts: Account[] = [
-    { id: 1, amount: 1000 },
-    { id: 2, amount: 0 },
-    { id: 3, amount: 1002 }
-  ];
+
+  constructor(
+    private accountRepository: AccountRepository
+  ) { }
 
   getAll(): Promise<Account[]> {
-    return new Promise((resolve, reject) => {
-      resolve(this.accounts.slice());
-    });
+    return this.accountRepository.findAll();
   }
 
   create(account: Account): Promise<{}> {
-    return new Promise((resolve, reject) => {
-      this.accounts.push(account);
-      resolve();
-    });
+    return this.accountRepository.create(account);
   }
 }

@@ -32,6 +32,7 @@ class App {
     this.router = express.Router();
     this.injector = new Injector();
     this.injector.registerValue({ router: this.router });
+    this.injector.registerRepositories();
     this.injector.registerAll();
 
 
