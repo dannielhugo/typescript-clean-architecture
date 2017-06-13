@@ -1,4 +1,4 @@
-import { Account } from '../core/account';
+import { Account } from '../definitions/account';
 
 export default class AccountService {
   private accounts: Account[] = [
@@ -10,6 +10,13 @@ export default class AccountService {
   getAll(): Promise<Account[]> {
     return new Promise((resolve, reject) => {
       resolve(this.accounts.slice());
+    });
+  }
+
+  create(account: Account): Promise<{}> {
+    return new Promise((resolve, reject) => {
+      this.accounts.push(account);
+      resolve();
     });
   }
 }

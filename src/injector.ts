@@ -1,11 +1,19 @@
 import * as debug from 'debug';
 import { createContainer, listModules, Lifetime, AwilixContainer, ResolutionMode } from 'awilix';
 
-export class DependencyResolver {
-  static register(): AwilixContainer {
-    const container = createContainer();
+export class Injector {
+  public container: AwilixContainer;
 
-    container.loadModules([
+  constructor() {
+    this.container = createContainer();
+  }
+
+  registerValue(value: { [key: string]: any }): void {
+    this.container.registerValue(value);
+  }
+
+  registerAll(): void {
+    this.container.loadModules([
       [`${__dirname}/business/**/*.js`, Lifetime.TRANSIENT],
       [`${__dirname}/services/**/*.js`, Lifetime.SINGLETON],
       [`${__dirname}/adapters/**/*.js`, Lifetime.TRANSIENT]
@@ -17,9 +25,6 @@ export class DependencyResolver {
         }
       });
 
-    debug('app:dependency-resolver')(container.registrations);
-    return container;
+    debug('app:dependency-resolver')(this.container.registrations);
   }
-
-
 }

@@ -1,11 +1,6 @@
-import { Account } from '../../core/account';
+import { Account } from '../../definitions/account';
 
-interface AccountCtrl {
-  list: Function;
-  create: Function;
-}
-
-export default function(accountBusiness): AccountCtrl {
+export default function(accountBusiness) {
   return {
     list: (req, res) => {
       return accountBusiness.getAll()

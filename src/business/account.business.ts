@@ -1,5 +1,5 @@
 import AccountService from '../services/account.service';
-import { Account } from '../core/account';
+import { Account } from '../definitions/account';
 
 export default class AccountBusiness {
   constructor(
@@ -8,5 +8,9 @@ export default class AccountBusiness {
 
   getAll(): Promise<Account[]> {
     return this.accountService.getAll();
+  }
+
+  create(account: Account): Promise<{}> {
+    return this.accountService.create(account);
   }
 }
