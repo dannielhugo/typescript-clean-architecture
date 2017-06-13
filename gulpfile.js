@@ -30,13 +30,13 @@ gulp.task('assets', function() {
 
 gulp.task('start', ['scripts', 'assets'], function() {
   nodemon({
-    script: 'dist/index.js',
+    script: 'dist/external/web/index.js',
     ext: 'js',
     env: {
       'NODE_ENV': 'development',
       'DEBUG': 'app:*'
     }
-  })
+  });
 })
 
 gulp.task('default', ['watch', 'assets', 'start']);

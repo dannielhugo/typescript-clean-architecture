@@ -1,4 +1,4 @@
-import { Account } from '../../definitions/entities/account';
+import { Account } from '../../../application/definitions/entities/account';
 
 export default function(accountBusiness) {
   return {
@@ -9,7 +9,7 @@ export default function(accountBusiness) {
         });
     },
     create: (req, res) => {
-      return accountBusiness.create(req.body)
+      return accountBusiness.create(req.body.amount || 0)
         .then(() => res.json());
     }
   }

@@ -4,9 +4,10 @@ import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 
 import { scopePerRequest, makeInvoker, Request } from 'awilix-express';
-import { AwilixContainer } from 'awilix';
+import { AwilixContainer, Lifetime } from 'awilix';
 
-import { Injector } from './injector';
+import { Injector } from './../config/injector';
+import * as config from './../config/config.json';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -30,10 +31,7 @@ class App {
     this.express.use(bodyParser.urlencoded({ extended: false }));
 
     this.router = express.Router();
-    this.injector = new Injector();
-    this.injector.registerValue({ router: this.router });
-    this.injector.registerRepositories();
-    this.injector.registerAll();
+    this.inject();
 
 
     this.express.use(scopePerRequest(this.injector.container));
@@ -43,6 +41,15 @@ class App {
       });
       next();
     });
+  }
+
+  private inject(): void {
+    this.injector = new Injector();
+    this.injector.registerValue({ router: this.router });
+    this.injector.registerModule([`${__dirname}/../../application/business/**/*.js`, Lifetime.TRANSIENT]);
+    this.injector.registerModule([`${__dirname}/../../adapters/**/*.js`, Lifetime.SINGLETON]);
+    this.injector.registerModule([`${__dirname}/**/*.js`, Lifetime.SINGLETON]);
+    this.injector.registerModule([`${__dirname}/../storage/${(<any>config).storage}/**/*.js`, Lifetime.SINGLETON]);
   }
 
   // Configure API endpoints.
