@@ -7,8 +7,8 @@ import * as camelcase from 'camelcase';
 import { scopePerRequest, makeInvoker, Request } from 'awilix-express';
 import { AwilixContainer, Lifetime } from 'awilix';
 
-import { Injector } from './../config/injector';
-import * as config from './../config/config.json';
+import { Injector } from './../../external/plugins/injector';
+import * as config from './config/config.json';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -48,14 +48,12 @@ class App {
     this.injector = new Injector();
     this.injector.registerValue({ router: this.router });
     this.injector.registerModule([`${__dirname}/../../application/business/**/*.js`, Lifetime.TRANSIENT]);
-    this.injector.registerModule([`${__dirname}/../../adapters/**/*.js`, Lifetime.SINGLETON]);
+    this.injector.registerModule([`${__dirname}/../../adapters/storage/${(<any>config).storage}/**/*.js`, Lifetime.SINGLETON]);
     this.injector.registerModule([`${__dirname}/**/*.js`, Lifetime.SINGLETON]);
-    this.injector.registerModule([`${__dirname}/../storage/${(<any>config).storage}/**/*.js`, Lifetime.SINGLETON]);
   }
 
   // Configure API endpoints.
   private routes(): void {
-    this.injector.container.resolve('accountRoutes');
     const routes = this.injector.listModules([`${__dirname}/routes/**/*.js`]);
 
     for (let route of routes) {

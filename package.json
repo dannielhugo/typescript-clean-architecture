@@ -6,6 +6,7 @@
     "start": "gulp"
   },
   "dependencies": {
+    "ajv": "^5.1.5",
     "awilix": "^2.3.0",
     "awilix-express": "^0.11.0",
     "body-parser": "^1.17.2",
@@ -16,8 +17,8 @@
     "typescript": "2.3"
   },
   "devDependencies": {
-    "@types/camelcase": "^0.0.30",
     "@types/body-parser": "^1.16.3",
+    "@types/camelcase": "^0.0.30",
     "@types/debug": "0.0.29",
     "@types/express": "4.0.33",
     "@types/morgan": "^1.7.32",

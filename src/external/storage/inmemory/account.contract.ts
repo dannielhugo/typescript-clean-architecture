@@ -54,5 +54,4 @@ export default class InMemoryAccountContract implements AccountContract {
       resolve(account || null);
     });
   }
-
 }
