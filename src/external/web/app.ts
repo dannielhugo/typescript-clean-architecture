@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
+import * as camelcase from 'camelcase';
 
 import { scopePerRequest, makeInvoker, Request } from 'awilix-express';
 import { AwilixContainer, Lifetime } from 'awilix';
@@ -55,6 +56,12 @@ class App {
   // Configure API endpoints.
   private routes(): void {
     this.injector.container.resolve('accountRoutes');
+    const routes = this.injector.listModules([`${__dirname}/routes/**/*.js`]);
+
+    for (let route of routes) {
+      this.injector.container.resolve(camelcase(route.name));
+    }
+
     this.express.use('/', this.router);
   }
 

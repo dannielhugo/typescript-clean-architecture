@@ -1,9 +1,11 @@
 import {
   createContainer,
+  listModules,
   Lifetime,
   AwilixContainer,
   ResolutionMode,
-  RegistrationOptions
+  RegistrationOptions,
+  ModuleDescriptor
 } from 'awilix';
 
 export class Injector {
@@ -24,6 +26,12 @@ export class Injector {
       registrationOptions: {
         resolutionMode: ResolutionMode.CLASSIC
       }
+    });
+  }
+
+  listModules(globPattern: string[] | [string, RegistrationOptions][]): ModuleDescriptor[] {
+    return listModules(globPattern, {
+      cwd: '.'
     });
   }
 
