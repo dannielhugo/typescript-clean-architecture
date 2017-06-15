@@ -10,7 +10,7 @@ export default class AccountBusiness {
     return this.accountContract.findAll();
   }
 
-  create(amount: number): Promise<Account> {
-    return this.accountContract.create(amount);
+  create(owner: string, balance: number): Promise<Account> {
+    return this.accountContract.create(owner, balance);
   }
 }

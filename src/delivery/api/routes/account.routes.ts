@@ -1,4 +1,4 @@
-export default function (router, accountCtrl) {
+export default function(router, jsonMiddleware, accountSchema, accountCtrl) {
   router.get('/accounts', accountCtrl.list);
-  router.post('/accounts', accountCtrl.create);
+  router.post('/accounts', jsonMiddleware(accountSchema.schema), accountCtrl.create);
 }

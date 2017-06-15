@@ -5,12 +5,12 @@ export default function(accountBusiness) {
     list: (req, res) => {
       return accountBusiness.getAll()
         .then((accounts: Account[]) => {
-          res.json(accounts);
+          res.json({status: 200, data: accounts});
         });
     },
     create: (req, res) => {
-      return accountBusiness.create(req.body.amount || 0)
-        .then(() => res.json());
+      return accountBusiness.create(req.body.owner, req.body.balance)
+        .then(() => res.json({status: 200}));
     }
   }
 }

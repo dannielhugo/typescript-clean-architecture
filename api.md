@@ -2,7 +2,9 @@ POST http://localhost:4200/accounts
 Content-type: application/json
 
 {
-    "amount": 1000
+    "owner": "Joberto",
+    "balance": 100,
+    "bannn": 10
 }
 
 -----------------------------------------

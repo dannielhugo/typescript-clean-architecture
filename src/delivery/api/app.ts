@@ -8,6 +8,7 @@ import { scopePerRequest, makeInvoker, Request } from 'awilix-express';
 import { AwilixContainer, Lifetime } from 'awilix';
 
 import { Injector } from './../../external/plugins/injector';
+import jsonMiddleware from './middlewares/json.middleware';
 import * as config from './config/config.json';
 
 // Creates and configures an ExpressJS web server.
@@ -33,8 +34,9 @@ class App {
 
     this.router = express.Router();
     this.inject();
+    this.injectSchemas();
 
-
+    // console.log(this.injector.container.registrations);
     this.express.use(scopePerRequest(this.injector.container));
     this.express.use((req: Request, res, next) => {
       req.container.registerValue({
@@ -44,12 +46,19 @@ class App {
     });
   }
 
+  // Inject base app classes
   private inject(): void {
     this.injector = new Injector();
     this.injector.registerValue({ router: this.router });
+    //Core injection
     this.injector.registerModule([`${__dirname}/../../application/business/**/*.js`, Lifetime.TRANSIENT]);
-    this.injector.registerModule([`${__dirname}/../../adapters/storage/${(<any>config).storage}/**/*.js`, Lifetime.SINGLETON]);
+
+    //External injection
+    this.injector.registerModule([`${__dirname}/../../external/storage/${(<any>config).storage}/**/*.js`, Lifetime.SINGLETON]);
+
+    //Delivery injection
     this.injector.registerModule([`${__dirname}/**/*.js`, Lifetime.SINGLETON]);
+
   }
 
   // Configure API endpoints.
@@ -61,6 +70,17 @@ class App {
     }
 
     this.express.use('/', this.router);
+  }
+
+  // Inject Schemas
+  private injectSchemas(): void {
+    const schemas = this.injector.listModules([`${__dirname}/schemas/**/*.js`]);
+
+    for(let schema of schemas ) {
+      this.injector.registerValue({
+        [camelcase(schema.name)]: require(schema.path)
+      });
+    }
   }
 
 }

@@ -21,11 +21,12 @@ export default class InMemoryAccountContract implements AccountContract {
     });
   }
 
-  create(amount: number): Promise<Account> {
+  create(owner: string, balance: number): Promise<Account> {
     return new Promise((resolve, reject) => {
       const acc = {
         id: this.lastId++,
-        amount: amount
+        owner: owner,
+        balance: balance
       };
 
       this.accounts.push(acc);
@@ -34,7 +35,7 @@ export default class InMemoryAccountContract implements AccountContract {
     });
   }
 
-  update(id: number, amount: number): Promise<Account> {
+  update(id: number, data: { owner: string, balance: number }): Promise<Account> {
     return new Promise((resolve, reject) => {
       let idx = -1;
 
@@ -48,7 +49,8 @@ export default class InMemoryAccountContract implements AccountContract {
       });
 
       if (idx !== -1) {
-        this.accounts[idx].amount = amount;
+        this.accounts[idx].owner = data.owner;
+        this.accounts[idx].balance = data.balance;
       }
 
       resolve(account || null);
