@@ -1,7 +1,6 @@
-import { JsonSchema } from './json-schema';
+import { JsonSchema } from './json.schema';
 
-export const schema: JsonSchema =
-  {
+export const schema: JsonSchema = {
     title: 'Account',
     type: 'object',
     additionalProperties: false,
@@ -16,4 +15,4 @@ export const schema: JsonSchema =
       }
     },
     required: ['owner', 'balance']
-  }
+  };

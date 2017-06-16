@@ -12,5 +12,5 @@ export default function(accountBusiness) {
       return accountBusiness.create(req.body.owner, req.body.balance)
         .then(() => res.json({status: 200}));
     }
-  }
+  };
 }
