@@ -5,9 +5,13 @@ export default class InMemoryAccountContract implements AccountContract {
   private accounts: Account[] = [];
   private lastId = 1;
 
-  findAll(): Promise<Account[]> {
+  findByUserId(userId: number): Promise<Account[]> {
     return new Promise((resolve, reject) => {
-      resolve(this.accounts.slice());
+      const accounts = this.accounts.filter((acc) => {
+        return acc.userId === userId;
+      });
+
+      resolve(accounts || []);
     });
   }
 
@@ -21,39 +25,18 @@ export default class InMemoryAccountContract implements AccountContract {
     });
   }
 
-  create(owner: string, balance: number): Promise<Account> {
+  create(userId: number, description: string, balance: number): Promise<Account> {
     return new Promise((resolve, reject) => {
       const acc = {
         id: this.lastId++,
-        owner: owner,
+        userId: userId,
+        description: description,
         balance: balance
       };
 
       this.accounts.push(acc);
 
       resolve(acc);
-    });
-  }
-
-  update(id: number, data: { owner: string, balance: number }): Promise<Account> {
-    return new Promise((resolve, reject) => {
-      let idx = -1;
-
-      const account = this.accounts.find((acc, index, array) => {
-        if (acc.id === id) {
-          idx = index;
-          return true;
-        }
-
-        return false;
-      });
-
-      if (idx !== -1) {
-        this.accounts[idx].owner = data.owner;
-        this.accounts[idx].balance = data.balance;
-      }
-
-      resolve(account || null);
     });
   }
 }

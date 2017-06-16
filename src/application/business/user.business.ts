@@ -1,4 +1,4 @@
-import { User } from '../definitions/entities/user';
+import { User, USER } from '../definitions/entities/user';
 import { UserContract } from '../definitions/contracts/user.contract';
 
 export default class UserBusiness {
@@ -10,8 +10,10 @@ export default class UserBusiness {
     return this.userContract
       .findByDocument(document)
       .then((user) => {
-        // In case user already exists
-        if (user) return user;
+        // In case user already exists return a rejected promise
+        if (user) {
+          return Promise.reject(USER.DUPLICATED_USER_ERROR);
+        }
 
         return this.userContract.create(firstName, lastName, document);
       });

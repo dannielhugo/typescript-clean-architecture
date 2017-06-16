@@ -4,3 +4,8 @@ export interface User {
     lastName: string;
     document: string;
 }
+
+export const USER = {
+  DUPLICATED_USER_ERROR: 'user_exists',
+  MISSING_USER_ERROR: 'user_does_not_exists'
+};

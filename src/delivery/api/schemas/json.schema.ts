@@ -101,17 +101,17 @@ export interface JsonSchema {
    * Holds simple JSON Schema definitions for
    * referencing from elsewhere.
    */
-  definitions?: {[key: string]: JsonSchema};
+  definitions?: { [key: string]: JsonSchema };
   /**
    * The keys that can exist on the object with the
    * json schema that should validate their value
    */
-  properties?: {[property: string]: JsonSchema};
+  properties?: { [property: string]: JsonSchema };
   /**
    * The key of this object is a regex for which
    * properties the schema applies to
    */
-  patternProperties?: {[pattern: string]: JsonSchema};
+  patternProperties?: { [pattern: string]: JsonSchema };
   /**
    * If the key is present as a property then the
    * string of properties must also be present.
@@ -119,7 +119,7 @@ export interface JsonSchema {
    * also be valid for the object if the key is
    * present.
    */
-  dependencies?: {[key: string]: JsonSchema | string[]};
+  dependencies?: { [key: string]: JsonSchema | string[] };
 
   /////////////////////////////////////////////////
   // Generic

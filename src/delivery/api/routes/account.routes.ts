@@ -1,4 +1,5 @@
 export default function(router, jsonMiddleware, accountSchema, accountCtrl) {
-  router.get('/accounts', accountCtrl.list);
-  router.post('/accounts', jsonMiddleware(accountSchema.schema), accountCtrl.create);
+  router.route('/user/:userId/accounts')
+    .get(accountCtrl.list)
+    .post(jsonMiddleware(accountSchema.schema), accountCtrl.create);
 }

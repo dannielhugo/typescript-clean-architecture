@@ -9,7 +9,6 @@
       "spaces"
     ],
     "jsdoc-format": true,
-    "linebreak-style": [true, "CRLF"],
     "one-line": [true,
       "check-catch",
       "check-else"
