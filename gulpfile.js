@@ -7,7 +7,6 @@ const debug = require('gulp-debug');
 
 const JSON_FILES = ['src/*.json', 'src/**/*.json'];
 
-// pull in the project TypeScript config
 const tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('scripts', () => {

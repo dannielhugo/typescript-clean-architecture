@@ -1,6 +1,7 @@
 {
-  "name": "base-clean-base",
+  "name": "typescript-clean-architeture",
   "version": "1.0.0",
+  "description": "Typescript clean architeture implementantion."
   "license": "MIT",
   "scripts": {
     "start": "gulp"
