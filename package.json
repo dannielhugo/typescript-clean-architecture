@@ -27,6 +27,8 @@
     "gulp-debug": "^3.1.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-sourcemap": "^1.0.1",
-    "gulp-typescript": "^3.1.7"
+    "gulp-tslint": "^8.1.1",
+    "gulp-typescript": "^3.1.7",
+    "tslint": "^5.4.3"
   }
 }
