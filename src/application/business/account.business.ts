@@ -6,11 +6,11 @@ export default class AccountBusiness {
     private accountContract: AccountContract
   ) { }
 
-  getAll(): Promise<Account[]> {
-    return this.accountContract.findAll();
+  findByUserId(userId: number): Promise<Account[]> {
+    return this.accountContract.findByUserId(userId);
   }
 
-  create(owner: string, balance: number): Promise<Account> {
-    return this.accountContract.create(owner, balance);
+  create(userId: number, balance: number): Promise<Account> {
+    return this.accountContract.create(userId, balance);
   }
 }
