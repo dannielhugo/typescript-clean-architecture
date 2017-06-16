@@ -3,7 +3,7 @@
 This is a simple implementation of an account management using typescript and
 Uncle Bob's Clean Architeture concepts.
 
-I used [awilix](https://github.com/jeffijoe/awilix) to make use of Dependency Injection for this project.
+I used [awilix](https://github.com/jeffijoe/awilix) to develop a Dependency Injection in this project.
 
 > It still under development, so things might (and will) change along the way.
 
