@@ -24,7 +24,8 @@ export class Injector {
       formatName: 'camelCase',
       cwd: '.',
       registrationOptions: {
-        resolutionMode: ResolutionMode.CLASSIC
+        resolutionMode: ResolutionMode.CLASSIC,
+        lifetime: Lifetime.SINGLETON
       }
     });
   }

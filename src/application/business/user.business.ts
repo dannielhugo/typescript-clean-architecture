@@ -4,7 +4,7 @@ import { UserContract } from '../definitions/contracts/user.contract';
 export default class UserBusiness {
   constructor(
     private userContract: UserContract
-  ) { }
+  ) {}
 
   create(firstName: string, lastName: string, document: string): Promise<User> {
     return this.userContract

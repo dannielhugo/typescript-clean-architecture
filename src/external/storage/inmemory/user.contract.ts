@@ -5,13 +5,16 @@ export default class InMemoryUserContract implements UserContract {
   private users: User[] = [];
   private lastId = 1;
 
+  constructor() {}
+
   findById(userId: number): Promise<User> {
     return new Promise((resolve, reject) => {
-      const users = this.users.filter((usr) => {
+      const user = this.users.find((usr) => {
         return usr.id === userId;
       });
 
-      resolve(users || []);
+
+      resolve(user || null);
     });
   }
 

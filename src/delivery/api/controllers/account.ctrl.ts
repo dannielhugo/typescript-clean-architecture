@@ -13,7 +13,7 @@ export default function(accountBusiness) {
     create: (req, res) => {
       return accountBusiness
         .create(
-        req.params.userId,
+        parseInt(req.params.userId),
         req.body.description,
         req.body.balance
         )
