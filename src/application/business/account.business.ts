@@ -30,6 +30,5 @@ export default class AccountBusiness {
 
         return this.accountContract.create(userId, description, balance);
       });
-
   }
 }

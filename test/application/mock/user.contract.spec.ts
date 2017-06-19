@@ -1,7 +1,7 @@
-import { UserContract } from '../../../application/definitions/contracts/user.contract';
-import { User } from '../../../application/definitions/entities/user';
+import { UserContract } from '../../../src/application/definitions/contracts/user.contract';
+import { User } from '../../../src/application/definitions/entities/user';
 
-export default class InMemoryUserContract implements UserContract {
+export default class UserContractMock implements UserContract {
   private users: User[] = [];
   private lastId = 1;
 

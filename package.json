@@ -4,12 +4,12 @@
   "description": "Typescript clean architecture implementantion.",
   "license": "MIT",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "test": "mocha -r ts-node/register test/**/*.spec.ts"
   },
   "dependencies": {
     "ajv": "^5.1.5",
     "awilix": "^2.3.0",
-    "awilix-express": "^0.11.0",
     "body-parser": "^1.17.2",
     "camelcase": "^4.1.0",
     "debug": "^2.6.8",
@@ -20,16 +20,23 @@
   "devDependencies": {
     "@types/body-parser": "^1.16.3",
     "@types/camelcase": "^0.0.30",
+    "@types/chai": "^4.0.0",
+    "@types/chai-as-promised": "^0.0.31",
     "@types/debug": "0.0.29",
     "@types/express": "4.0.33",
+    "@types/mocha": "^2.2.41",
     "@types/morgan": "^1.7.32",
     "@types/node": "6.0.46",
+    "chai": "^4.0.2",
+    "chai-as-promised": "^7.0.0",
     "gulp": "^3.9.1",
     "gulp-debug": "^3.1.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-sourcemap": "^1.0.1",
     "gulp-tslint": "^8.1.1",
     "gulp-typescript": "^3.1.7",
+    "mocha": "^3.4.2",
+    "ts-node": "^3.0.6",
     "tslint": "^5.4.3"
   }
 }
