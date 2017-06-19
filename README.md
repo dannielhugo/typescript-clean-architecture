@@ -1,7 +1,9 @@
-# Typescript Clean Architeture Example
+# Typescript Clean Architecture Example
+
+:warning:  This is still under development!
 
 This is a simple implementation of an account management using typescript and
-Uncle Bob's Clean Architeture concepts.
+Uncle Bob's Clean Architecture concepts.
 
 I used [awilix](https://github.com/jeffijoe/awilix) to develop a Dependency Injection in this project.
 
@@ -11,7 +13,7 @@ I used [awilix](https://github.com/jeffijoe/awilix) to develop a Dependency Inje
 ```
 .
 ├── src
-|   ├── application           - Application files. The core of clean architeture
+|   ├── application           - Application files. The core of clean architecture
 |   |   ├── business          - Business logic goes here
 |   |   └── definitions       - Some interfaces and classes that defines our app.
 |   |       ├── contracts     - Contracts between business and deliveries
