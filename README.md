@@ -40,3 +40,10 @@ For now there is only one delivery option, which is by exposing an API for accou
 management.
 
 - [API DELIVERY DOCS](docs/API.md)
+
+## Installing and Running
+
+```bash
+$ yarn install
+$ yarn start
+```
