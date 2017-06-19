@@ -5,7 +5,7 @@ export default class InMemoryUserContract implements UserContract {
   private users: User[] = [];
   private lastId = 1;
 
-  constructor() {}
+  constructor() { }
 
   findById(userId: number): Promise<User> {
     return new Promise((resolve, reject) => {

@@ -1,14 +1,12 @@
 import { User } from '../../../application/definitions/entities/user';
 
 export default class UserCtrl {
-  private userBusiness;
-
-  constructor(private userBusiness) {
-    console.log('UserCtrl');
-  }
+  constructor() { }
 
   create(req, res) {
-    return this.userBusiness
+    const userBusiness = req.container.resolve('userBusiness');
+
+    return userBusiness
       .create(
       req.body.first_name,
       req.body.last_name,

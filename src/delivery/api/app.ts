@@ -3,12 +3,16 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as camelcase from 'camelcase';
-
 import { AwilixContainer, Lifetime } from 'awilix';
 
 import { Injector } from './../../external/plugins/injector';
 import jsonMiddleware from './middlewares/json.middleware';
 import * as config from './config/config.json';
+
+interface Request extends express.Request {
+  container: AwilixContainer;
+  user: {};
+}
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -35,7 +39,7 @@ class App {
     this.injectSchemas();
 
     // console.log(this.injector.container.registrations);
-    this.express.use((req, res, next) => {
+    this.express.use((req: Request, res, next) => {
       req.container = this.injector.container.createScope();
 
       req.container.registerValue({

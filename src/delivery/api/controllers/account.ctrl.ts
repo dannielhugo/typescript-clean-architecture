@@ -1,10 +1,12 @@
 import { Account } from '../../../application/definitions/entities/account';
 
 export default class AccountCtrl {
-  constructor(private accountBusiness) { }
+  constructor() { }
 
   list(req, res) {
-    return this.accountBusiness
+    const accountBusiness = req.container.resolve('accountBusiness');
+
+    return accountBusiness
       .findByUserId(req.params.userId)
       .then((accounts: Account[]) => {
         res.json({ status: 200, data: accounts });
@@ -13,7 +15,9 @@ export default class AccountCtrl {
   }
 
   create(req, res) {
-    return this.accountBusiness
+    const accountBusiness = req.container.resolve('accountBusiness');
+
+    return accountBusiness
       .create(
       parseInt(req.params.userId),
       req.body.description,
