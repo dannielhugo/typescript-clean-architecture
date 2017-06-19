@@ -4,7 +4,6 @@ import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as camelcase from 'camelcase';
 
-import { scopePerRequest, makeInvoker, Request } from 'awilix-express';
 import { AwilixContainer, Lifetime } from 'awilix';
 
 import { Injector } from './../../external/plugins/injector';
@@ -36,8 +35,9 @@ class App {
     this.injectSchemas();
 
     // console.log(this.injector.container.registrations);
-    this.express.use(scopePerRequest(this.injector.container));
-    this.express.use((req: Request, res, next) => {
+    this.express.use((req, res, next) => {
+      req.container = this.injector.container.createScope();
+
       req.container.registerValue({
         user: req.user
       });
@@ -50,13 +50,12 @@ class App {
     this.injector = new Injector();
     this.injector.registerValue({ router: this.router });
     // Core injections
-    this.injector.registerModule([`${__dirname}/../../application/business/**/*.js`, Lifetime.TRANSIENT]);
+    this.injector.registerModule([
+      [`${__dirname}/../../application/business/**/*.js`, { lifetime: Lifetime.SCOPED }],
+      [`${__dirname}/../../external/storage/${(<any>config).storage}/**/*.js`, { lifetime: Lifetime.SINGLETON }],
+      [`${__dirname}/**/*.js`, { lifetime: Lifetime.SINGLETON }]
+    ]);
 
-    // External injections
-    this.injector.registerModule([`${__dirname}/../../external/storage/${(<any>config).storage}/**/*.js`, Lifetime.SINGLETON]);
-
-    // Delivery injections
-    this.injector.registerModule([`${__dirname}/**/*.js`, Lifetime.SINGLETON]);
   }
 
   // Configure API endpoints.
@@ -72,7 +71,6 @@ class App {
 
   // Inject Schemas
   private injectSchemas(): void {
-
     const schemas = this.injector.listModules([`${__dirname}/schemas/**/*.js`]);
 
     for (const schema of schemas) {

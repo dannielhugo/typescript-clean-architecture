@@ -30,10 +30,6 @@ export class Injector {
     });
   }
 
-  registerFunction(value: { [name: string]: Function }): void {
-    this.container.registerFunction(value);
-  }
-
   listModules(globPattern: string[] | [string, RegistrationOptions][]): ModuleDescriptor[] {
     return listModules(globPattern, {
       cwd: '.'
