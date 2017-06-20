@@ -9,8 +9,8 @@ const JSON_FILES = ['src/*.json', 'src/**/*.json'];
 
 const tsProject = ts.createProject('tsconfig.json');
 
-gulp.task('scripts', () => {
-  const tsResult = tsProject.src()
+gulp.task('scripts', ['assets'], () => {
+  const tsResult = gulp.src('src/**/*.ts')
     .pipe(sourcemaps.init())
     .pipe(tsProject());
 
@@ -19,7 +19,7 @@ gulp.task('scripts', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('tslint', () => {
+gulp.task('tslint', ['assets'], () => {
   return gulp.src('src/**/*.ts')
     .pipe(tslint({
       formatter: 'verbose'
@@ -27,7 +27,7 @@ gulp.task('tslint', () => {
     .pipe(tslint.report());
 });
 
-gulp.task('watch', ['scripts'], () => {
+gulp.task('watch', () => {
   return gulp.watch('src/**/*.ts', ['tslint', 'scripts']);
 });
 
@@ -47,4 +47,4 @@ gulp.task('start', ['scripts', 'assets'], function () {
   });
 });
 
-gulp.task('default', ['watch', 'tslint', 'assets', 'start']);
+gulp.task('default', ['watch', 'tslint', 'start']);

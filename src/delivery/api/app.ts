@@ -7,7 +7,7 @@ import { AwilixContainer, Lifetime } from 'awilix';
 
 import { Injector } from './../../external/plugins/injector';
 import jsonMiddleware from './middlewares/json.middleware';
-import * as config from './config/config.json';
+import * as config from './config/config';
 
 interface Request extends express.Request {
   container: AwilixContainer;
