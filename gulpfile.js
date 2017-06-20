@@ -4,22 +4,27 @@ const nodemon = require('gulp-nodemon');
 const sourcemaps = require('gulp-sourcemaps');
 const tslint = require('gulp-tslint');
 const debug = require('gulp-debug');
+const Cache = require('gulp-file-cache');
 
 const JSON_FILES = ['src/*.json', 'src/**/*.json'];
 
 const tsProject = ts.createProject('tsconfig.json');
 
+const cache = new Cache();
+
 gulp.task('scripts', ['assets'], () => {
   const tsResult = gulp.src('src/**/*.ts')
+    .pipe(cache.filter())
     .pipe(sourcemaps.init())
     .pipe(tsProject());
 
   return tsResult.js
     .pipe(sourcemaps.write())
+    .pipe(cache.cache())
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('tslint', ['assets'], () => {
+gulp.task('tslint', () => {
   return gulp.src('src/**/*.ts')
     .pipe(tslint({
       formatter: 'verbose'
@@ -27,24 +32,29 @@ gulp.task('tslint', ['assets'], () => {
     .pipe(tslint.report());
 });
 
-gulp.task('watch', () => {
-  return gulp.watch('src/**/*.ts', ['tslint', 'scripts']);
-});
-
 gulp.task('assets', function () {
   return gulp.src(JSON_FILES)
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('start', ['scripts', 'assets'], function () {
-  nodemon({
+gulp.task('start', function () {
+  const stream = nodemon({
     script: 'dist/delivery/api/index.js',
-    ext: 'js',
+    ext: 'ts json',
+    verbose: true,
     env: {
       'NODE_ENV': 'development',
-      'DEBUG': 'app:*'
-    }
+      'DEBUG': 'app:*',
+    },
+    delay: 2500,
+    watch: 'src/**/*.ts',
+    tasks: ['tslint' ,'assets', 'scripts']
   });
+
+  return stream
+    .on('crash', () => {
+      stream.emit('restart', 2);
+    });
 });
 
-gulp.task('default', ['watch', 'tslint', 'start']);
+gulp.task('default', ['tslint', 'scripts', 'start']);
