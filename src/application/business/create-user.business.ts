@@ -1,7 +1,7 @@
 import { User, USER } from '../definitions/entities/user';
 import { UserContract } from '../definitions/contracts/user.contract';
 
-export default class UserBusiness {
+export default class CreateUserBusiness {
   constructor(
     private userContract: UserContract
   ) { }

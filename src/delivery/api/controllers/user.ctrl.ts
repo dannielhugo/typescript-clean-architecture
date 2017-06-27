@@ -4,9 +4,9 @@ export default class UserCtrl {
   constructor() { }
 
   create(req, res) {
-    const userBusiness = req.container.resolve('userBusiness');
+    const business = req.container.resolve('createUserBusiness');
 
-    return userBusiness
+    return business
       .create(
       req.body.first_name,
       req.body.last_name,

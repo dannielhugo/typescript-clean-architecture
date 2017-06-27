@@ -4,9 +4,9 @@ export default class AccountCtrl {
   constructor() { }
 
   list(req, res) {
-    const accountBusiness = req.container.resolve('accountBusiness');
+    const business = req.container.resolve('getAccountBusiness');
 
-    return accountBusiness
+    return business
       .findByUserId(req.params.userId)
       .then((accounts: Account[]) => {
         res.json({ status: 200, data: accounts });
@@ -15,9 +15,9 @@ export default class AccountCtrl {
   }
 
   create(req, res) {
-    const accountBusiness = req.container.resolve('accountBusiness');
+    const business = req.container.resolve('createAccountBusiness');
 
-    return accountBusiness
+    return business
       .create(
       parseInt(req.params.userId),
       req.body.description,

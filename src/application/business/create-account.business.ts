@@ -3,15 +3,11 @@ import { User, USER } from '../definitions/entities/user';
 import { AccountContract } from '../definitions/contracts/account.contract';
 import { UserContract } from '../definitions/contracts/user.contract';
 
-export default class AccountBusiness {
+export default class CreateAccountBusiness {
   constructor(
     private accountContract: AccountContract,
     private userContract: UserContract
   ) {}
-
-  findByUserId(userId: number): Promise<Account[]> {
-    return this.accountContract.findByUserId(userId);
-  }
 
   create(userId: number, description: string, balance: number): Promise<Account> {
     return this.userContract

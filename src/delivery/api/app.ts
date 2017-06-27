@@ -7,7 +7,7 @@ import { AwilixContainer, Lifetime } from 'awilix';
 
 import { Injector } from './../../external/plugins/injector';
 import jsonMiddleware from './middlewares/json.middleware';
-import * as config from './config/config';
+import { config } from './config/config';
 
 interface Request extends express.Request {
   container: AwilixContainer;
@@ -38,7 +38,6 @@ class App {
     this.inject();
     this.injectSchemas();
 
-    // console.log(this.injector.container.registrations);
     this.express.use((req: Request, res, next) => {
       req.container = this.injector.container.createScope();
 
@@ -56,7 +55,7 @@ class App {
     // Core injections
     this.injector.registerModule([
       [`${__dirname}/../../application/business/**/*.js`, { lifetime: Lifetime.SCOPED }],
-      [`${__dirname}/../../external/storage/${(<any>config).storage}/**/*.js`, { lifetime: Lifetime.SINGLETON }],
+      [`${__dirname}/../../external/storage/${config.storage}/**/*.js`, { lifetime: Lifetime.SINGLETON }],
       [`${__dirname}/**/*.js`, { lifetime: Lifetime.SINGLETON }]
     ]);
 

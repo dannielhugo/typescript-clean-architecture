@@ -2,7 +2,7 @@ import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import 'mocha';
 
-import AccountBusiness from '../../../src/application/business/account.business';
+import GetAccountBusiness from '../../../src/application/business/get-account.business';
 import AccountContractMock from '../mock/account.contract.spec';
 import UserContractMock from '../mock/user.contract.spec';
 
@@ -11,9 +11,9 @@ before(() => {
     chai.use(chaiAsPromised);
 });
 
-describe('AccountBusiness', () => {
+describe('GetAccountBusiness', () => {
   it('#findByUserId should resolve for an empty array', () => {
-    const business = new AccountBusiness(
+    const business = new GetAccountBusiness(
       new AccountContractMock(),
       new UserContractMock()
     );
