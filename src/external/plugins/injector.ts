@@ -5,7 +5,8 @@ import {
   AwilixContainer,
   ResolutionMode,
   RegistrationOptions,
-  ModuleDescriptor
+  ModuleDescriptor,
+  asValue
 } from 'awilix';
 
 export class Injector {
@@ -16,7 +17,12 @@ export class Injector {
   }
 
   registerValue(value: { [key: string]: any }): void {
-    this.container.registerValue(value);
+    const reg = Object.keys(value).reduce((sofar, key) => {
+      sofar[key] = asValue(value[key]);
+      return sofar;
+    }, {});
+
+    this.container.register(reg);
   }
 
   registerModule(globPattern: string[] | [string, RegistrationOptions][]): void {
