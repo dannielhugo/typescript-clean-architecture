@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as camelcase from 'camelcase';
-import { AwilixContainer, Lifetime } from 'awilix';
+import { AwilixContainer, Lifetime, asValue } from 'awilix';
 
 import { Injector } from './../../external/plugins/injector';
 import jsonMiddleware from './middlewares/json.middleware';
@@ -41,8 +41,8 @@ class App {
     this.express.use((req: Request, res, next) => {
       req.container = this.injector.container.createScope();
 
-      req.container.registerValue({
-        user: req.user
+      req.container.register({
+        user: asValue(req.user)
       });
       next();
     });

@@ -18,8 +18,6 @@ const validate = (schema) => {
     next();
   };
 };
-
-
 export default function jsonMiddleware() {
   return validate;
 }

@@ -18,7 +18,7 @@ Content-type: application/json
 ### ADD AN ACCOUNT TO USER
 
 ```
-POST http://localhost:4422/user/1/accounts
+POST http://localhost:4422/users/1/accounts
 Content-type: application/json
 
 {
@@ -32,6 +32,6 @@ Content-type: application/json
 ### LIST ALL ACCOUNTS
 
 ```
-GET http://localhost:4422/user/1/accounts
+GET http://localhost:4422/users/1/accounts
 Content-type: application/json
 ```
