@@ -32,7 +32,10 @@ gulp.task('tslint', () => {
     .pipe(tslint({
       formatter: 'verbose'
     }))
-    .pipe(tslint.report());
+    .pipe(tslint.report({
+      emitError: false,
+      allowWarnings: true
+    }));
 });
 
 gulp.task('assets', function () {
