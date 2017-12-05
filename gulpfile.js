@@ -6,6 +6,7 @@ const tslint = require('gulp-tslint');
 const debug = require('gulp-debug');
 const Cache = require('gulp-file-cache');
 const sequence = require('gulp-sequence');
+const clean = require('gulp-clean');
 
 const JSON_FILES = ['src/*.json', 'src/**/*.json'];
 
@@ -14,6 +15,13 @@ const tsProject = ts.createProject('tsconfig.json', {
 });
 
 const cache = new Cache();
+
+gulp.task('clean', () => {
+  return gulp.src('build', {
+      read: false
+    })
+    .pipe(clean());
+});
 
 gulp.task('scripts', ['assets'], () => {
   const tsResult = gulp.src('src/**/*.ts')
@@ -38,7 +46,7 @@ gulp.task('tslint', () => {
     }));
 });
 
-gulp.task('assets', function () {
+gulp.task('assets', ['clean'], function () {
   return gulp.src(JSON_FILES)
     .pipe(gulp.dest('build'));
 });
@@ -54,7 +62,7 @@ gulp.task('start', function () {
     },
     delay: 2500,
     watch: 'src/**/*.ts',
-    tasks: ['tslint', 'assets', 'scripts']
+    tasks: ['tslint', 'scripts']
   });
 
   return stream

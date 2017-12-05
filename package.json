@@ -1,6 +1,6 @@
 {
   "name": "typescript-clean-architecture",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typescript clean architecture implementantion.",
   "license": "MIT",
   "scripts": {
@@ -32,6 +32,7 @@
     "chai": "^4.0.2",
     "chai-as-promised": "^7.0.0",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-debug": "^3.1.0",
     "gulp-file-cache": "^0.0.1",
     "gulp-nodemon": "^2.2.1",
