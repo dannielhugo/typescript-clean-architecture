@@ -19,6 +19,7 @@ export class Injector {
   registerValue(value: { [key: string]: any }): void {
     const reg = Object.keys(value).reduce((sofar, key) => {
       sofar[key] = asValue(value[key]);
+
       return sofar;
     }, {});
 

@@ -8,6 +8,7 @@
     "indent": [true,
       "spaces"
     ],
+    "newline-before-return": true,
     "jsdoc-format": true,
     "no-inferrable-types": true,
     "no-internal-module": true,
