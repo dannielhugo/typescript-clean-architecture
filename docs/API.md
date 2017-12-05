@@ -5,7 +5,7 @@ These are the endpoints available for account management so far:
 ### CREATE NEW USER
 
 ```
-POST http://localhost:4200/users
+POST http://localhost:4422/users
 Content-type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-type: application/json
 ### ADD AN ACCOUNT TO USER
 
 ```
-POST http://localhost:4200/user/1/accounts
+POST http://localhost:4422/user/1/accounts
 Content-type: application/json
 
 {
@@ -32,6 +32,6 @@ Content-type: application/json
 ### LIST ALL ACCOUNTS
 
 ```
-GET http://localhost:4200/user/1/accounts
+GET http://localhost:4422/user/1/accounts
 Content-type: application/json
 ```

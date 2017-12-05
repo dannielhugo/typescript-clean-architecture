@@ -5,7 +5,7 @@ import App from './app';
 
 debug('ts-express:server');
 
-const port = normalizePort(process.env.PORT || 4200);
+const port = normalizePort(process.env.PORT || 4422);
 App.set('port', port);
 
 const server = http.createServer(App);
@@ -13,7 +13,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-function normalizePort(val: number|string): number|string|boolean {
+function normalizePort(val: number | string): number | string | boolean {
   const port: number = (typeof val === 'string') ? parseInt(val, 10) : val;
   if (isNaN(port)) return val;
   else if (port >= 0) return port;
