@@ -1,5 +1,5 @@
-import { UserContract } from '../../../application/definitions/contracts/user.contract';
-import { User } from '../../../application/definitions/entities/user';
+import { UserContract } from '../../../application/entities/contracts/user.contract';
+import { User } from '../../../application/entities/data/user';
 
 export default class InMemoryUserContract implements UserContract {
   private users: User[] = [];

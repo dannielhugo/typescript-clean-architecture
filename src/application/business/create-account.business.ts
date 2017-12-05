@@ -1,7 +1,7 @@
-import { Account, ACCOUNT } from '../definitions/entities/account';
-import { User, USER } from '../definitions/entities/user';
-import { AccountContract } from '../definitions/contracts/account.contract';
-import { UserContract } from '../definitions/contracts/user.contract';
+import { Account, ACCOUNT } from '../entities/data/account';
+import { User, USER } from '../entities/data/user';
+import { AccountContract } from '../entities/contracts/account.contract';
+import { UserContract } from '../entities/contracts/user.contract';
 
 export default class CreateAccountBusiness {
   constructor(

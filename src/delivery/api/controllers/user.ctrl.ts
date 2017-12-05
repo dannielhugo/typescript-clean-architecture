@@ -1,4 +1,4 @@
-import { User } from '../../../application/definitions/entities/user';
+import { User } from '../../../application/entities/data/user';
 
 export default class UserCtrl {
   constructor() { }

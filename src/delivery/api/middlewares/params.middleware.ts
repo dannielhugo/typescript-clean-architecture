@@ -1,8 +1,7 @@
 export default function paramsMiddleware(utilPlugin, debug) {
-
   return (coercion) => {
     return (req, res, next) => {
-      utilPlugin.mapCollection(req.params, (param: any, index: string) => {
+      utilPlugin._map(req.params, (param: any, index: string) => {
         if (coercion[index]) {
           switch (coercion[index]) {
             case 'number':
@@ -16,6 +15,7 @@ export default function paramsMiddleware(utilPlugin, debug) {
           }
         }
       });
+
       next();
     };
   };

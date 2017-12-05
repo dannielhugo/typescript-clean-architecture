@@ -1,5 +1,5 @@
-import { User, USER } from '../definitions/entities/user';
-import { UserContract } from '../definitions/contracts/user.contract';
+import { User, USER } from '../entities/data/user';
+import { UserContract } from '../entities/contracts/user.contract';
 
 export default class CreateUserBusiness {
   constructor(
