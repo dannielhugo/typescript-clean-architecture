@@ -25,25 +25,35 @@ I used [awilix](https://github.com/jeffijoe/awilix) to develop a Dependency Inje
 |   |       ├── middlewares   - Express middlewares goes here
 |   |       ├── routes        - Express routes
 |   |       ├── schemas       - JSON Schema definitions for input validation
-|   |       └── index.ts      - API entrypoint
-|   └── external              - Some external dependencies, like databases and D.I
-|       ├── adapters          - Specify how data is transported from delivery to API
-|       ├── plugins           - External plugins, like D.I
-|       └── storage           - Storage definitions
-└── dist                      - Compiled javascript files
+|   |       ├── index.ts      - API entrypoint
+|   |       └── app.ts        - Here is where all things are glued together
+|   └── external              - Some external dependencies, like databases, libraries, etc
+|       ├── plugins           - External plugins, like Lodash
+|       └── storage           - Database implementations
+└── build                     - Compiled javascript files
 ```
 
 
 ## Delivery Options
 
-For now there is only one delivery option, which is by exposing an API for account
-management.
+For now there is only one delivery option, which is being exposed as an API for account management.
 
 - [API DELIVERY DOCS](docs/API.md)
 
 ## Installing and Running
 
+- Using yarn
 ```bash
 $ yarn install
 $ yarn start
 ```
+
+- Using npm
+```bash
+$ yarn install
+$ yarn start
+```
+
+## Testing :warning: - Work in progress
+
+Simply run `npm test` or `yarn test`
