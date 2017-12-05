@@ -5,10 +5,13 @@ const sourcemaps = require('gulp-sourcemaps');
 const tslint = require('gulp-tslint');
 const debug = require('gulp-debug');
 const Cache = require('gulp-file-cache');
+const sequence = require('gulp-sequence');
 
 const JSON_FILES = ['src/*.json', 'src/**/*.json'];
 
-const tsProject = ts.createProject('tsconfig.json');
+const tsProject = ts.createProject('tsconfig.json', {
+  declaration: true
+});
 
 const cache = new Cache();
 
@@ -21,7 +24,7 @@ gulp.task('scripts', ['assets'], () => {
   return tsResult.js
     .pipe(sourcemaps.write())
     .pipe(cache.cache())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('tslint', () => {
@@ -34,12 +37,12 @@ gulp.task('tslint', () => {
 
 gulp.task('assets', function () {
   return gulp.src(JSON_FILES)
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('start', function () {
   const stream = nodemon({
-    script: 'dist/delivery/api/index.js',
+    script: 'build/delivery/api/index.js',
     ext: 'ts json',
     verbose: true,
     env: {
@@ -48,7 +51,7 @@ gulp.task('start', function () {
     },
     delay: 2500,
     watch: 'src/**/*.ts',
-    tasks: ['tslint' ,'assets', 'scripts']
+    tasks: ['tslint', 'assets', 'scripts']
   });
 
   return stream
@@ -57,4 +60,4 @@ gulp.task('start', function () {
     });
 });
 
-gulp.task('default', ['tslint', 'scripts', 'start']);
+gulp.task('default', sequence(['tslint', 'scripts'], 'start'));
