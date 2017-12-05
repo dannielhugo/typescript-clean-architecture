@@ -1,24 +1,25 @@
 import {
-  createContainer,
-  listModules,
-  Lifetime,
   AwilixContainer,
-  ResolutionMode,
   RegistrationOptions,
-  ModuleDescriptor,
-  asValue
+  ModuleDescriptor
 } from 'awilix';
 
 export class Injector {
   public container: AwilixContainer;
 
-  constructor() {
+  constructor(
+    private createContainer,
+    private listModules,
+    private asValue,
+    private ResolutionMode,
+    private Lifetime
+  ) {
     this.container = createContainer();
   }
 
   registerValue(value: { [key: string]: any }): void {
     const reg = Object.keys(value).reduce((sofar, key) => {
-      sofar[key] = asValue(value[key]);
+      sofar[key] = this.asValue(value[key]);
 
       return sofar;
     }, {});
@@ -31,14 +32,14 @@ export class Injector {
       formatName: 'camelCase',
       cwd: '.',
       registrationOptions: {
-        resolutionMode: ResolutionMode.CLASSIC,
-        lifetime: Lifetime.SINGLETON
+        resolutionMode: this.ResolutionMode.CLASSIC,
+        lifetime: this.Lifetime.SINGLETON
       }
     });
   }
 
-  listModules(globPattern: string[] | [string, RegistrationOptions][]): ModuleDescriptor[] {
-    return listModules(globPattern, {
+  list(globPattern: string[] | [string, RegistrationOptions][]): ModuleDescriptor[] {
+    return this.listModules(globPattern, {
       cwd: '.'
     });
   }

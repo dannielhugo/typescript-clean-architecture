@@ -7,7 +7,7 @@ export default class CreateAccountBusiness {
   constructor(
     private accountContract: AccountContract,
     private userContract: UserContract
-  ) {}
+  ) { }
 
   create(userId: number, description: string, balance: number): Promise<Account> {
     return this.userContract

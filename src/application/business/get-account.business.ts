@@ -7,7 +7,7 @@ export default class GetAccountBusiness {
   constructor(
     private accountContract: AccountContract,
     private userContract: UserContract
-  ) {}
+  ) { }
 
   findByUserId(userId: number): Promise<Account[]> {
     return this.accountContract.findByUserId(userId);

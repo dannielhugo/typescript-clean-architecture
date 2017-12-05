@@ -1,9 +1,8 @@
-import * as debug from 'debug';
-import * as _ from 'lodash';
-export default function paramsMiddleware() {
+export default function paramsMiddleware(utilPlugin, debug) {
+
   return (coercion) => {
     return (req, res, next) => {
-      _.map(req.params, (param: any, index: string) => {
+      utilPlugin.mapCollection(req.params, (param: any, index: string) => {
         if (coercion[index]) {
           switch (coercion[index]) {
             case 'number':
@@ -17,7 +16,6 @@ export default function paramsMiddleware() {
           }
         }
       });
-      debug('app:middleware')(JSON.stringify(req.params));
       next();
     };
   };
