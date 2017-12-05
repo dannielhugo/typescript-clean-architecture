@@ -9,10 +9,6 @@
       "spaces"
     ],
     "jsdoc-format": true,
-    "one-line": [true,
-      "check-catch",
-      "check-else"
-    ],
     "no-inferrable-types": true,
     "no-internal-module": true,
     "no-null-keyword": false,
@@ -21,7 +17,9 @@
     "no-var-keyword": true,
     "one-line": [true,
       "check-open-brace",
-      "check-whitespace"
+      "check-whitespace",
+      "check-catch",
+      "check-else"
     ],
     "prefer-const": true,
     "quotemark": [true,
