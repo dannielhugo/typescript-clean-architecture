@@ -7,6 +7,7 @@ const debug = require('gulp-debug');
 const Cache = require('gulp-file-cache');
 const sequence = require('gulp-sequence');
 const clean = require('gulp-clean');
+const typedoc = require('gulp-typedoc');
 
 const JSON_FILES = ['src/*.json', 'src/**/*.json'];
 
@@ -46,12 +47,23 @@ gulp.task('tslint', () => {
     }));
 });
 
-gulp.task('assets', ['clean'], function () {
+gulp.task('assets', ['clean'], () => {
   return gulp.src(JSON_FILES)
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('start', function () {
+gulp.task("typedoc", () => {
+  return gulp
+    .src(["src/application/**/*.ts"])
+    .pipe(typedoc({
+      module: "commonjs",
+      target: "es6",
+      out: "docs/typedoc/",
+      name: "Typescript Clean Architecture"
+    }));
+});
+
+gulp.task('start', () => {
   const stream = nodemon({
     script: 'build/delivery/api/index.js',
     ext: 'ts json',
@@ -72,3 +84,5 @@ gulp.task('start', function () {
 });
 
 gulp.task('default', sequence(['tslint', 'scripts'], 'start'));
+gulp.task('doc', sequence('tslint', 'typedoc'));
+gulp.task('build', sequence(['tslint', 'scripts'], 'typedoc'));

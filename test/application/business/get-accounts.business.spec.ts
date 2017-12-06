@@ -42,6 +42,4 @@ describe('GetAccountsBusiness', () => {
     expect(accounts.length).toBe(ACCOUNT.MAX_ACCOUNTS_LIMIT);
 
   });
-
-
 });
