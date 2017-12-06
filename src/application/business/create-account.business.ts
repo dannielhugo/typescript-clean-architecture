@@ -9,22 +9,20 @@ export default class CreateAccountBusiness {
     private userContract: UserContract
   ) { }
 
-  create(userId: number, description: string, balance: number): Promise<Account> {
-    return this.userContract
-      .findById(userId)
-      .then((user) => {
-        if (!user) {
-          return Promise.reject(USER.MISSING_USER_ERROR);
-        }
+  async create(userId: number, description: string, balance: number): Promise<Account> {
+    const user: User = await this.userContract
+      .findById(userId);
 
-        return this.accountContract.findByUserId(user.id);
-      })
-      .then((accounts: Account[]) => {
-        if (accounts.length > ACCOUNT.MAX_ACCOUNTS_LIMIT) {
-          return Promise.reject(ACCOUNT.MAX_ACCOUNTS_ERROR);
-        }
+    if (!user || Object.keys(user).length === 0) {
+      return Promise.reject(USER.MISSING_USER_ERROR);
+    }
 
-        return this.accountContract.create(userId, description, balance);
-      });
+    const accounts: Account[] = await this.accountContract.findByUserId(user.id);
+
+    if (accounts.length >= ACCOUNT.MAX_ACCOUNTS_LIMIT) {
+      return Promise.reject(ACCOUNT.MAX_ACCOUNTS_ERROR);
+    }
+
+    return this.accountContract.create(userId, description, balance);
   }
 }

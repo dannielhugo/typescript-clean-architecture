@@ -4,10 +4,10 @@ export default class AccountCtrl {
   constructor() { }
 
   list(req, res) {
-    const business = req.container.resolve('getAccountBusiness');
+    const business = req.container.resolve('getAccountsBusiness');
 
     return business
-      .findByUserId(req.params.userId)
+      .getByUserId(req.params.userId)
       .then((accounts: Account[]) => {
         res.json({ status: 200, data: accounts });
       })

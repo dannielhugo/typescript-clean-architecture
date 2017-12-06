@@ -6,16 +6,15 @@ export default class CreateUserBusiness {
     private userContract: UserContract
   ) { }
 
-  create(firstName: string, lastName: string, document: string): Promise<User> {
-    return this.userContract
-      .findByDocument(document)
-      .then((user) => {
-        // In case user already exists return a rejected promise
-        if (user) {
-          return Promise.reject(USER.DUPLICATED_USER_ERROR);
-        }
+  async create(firstName: string, lastName: string, document: string): Promise<User> {
+    const user: User = await this.userContract
+      .findByDocument(document);
 
-        return this.userContract.create(firstName, lastName, document);
-      });
+    // In case user already exists return a rejected promise
+    if (user && Object.keys(user).length !== 0) {
+      return Promise.reject(USER.DUPLICATED_USER_ERROR);
+    }
+
+    return this.userContract.create(firstName, lastName, document);
   }
 }

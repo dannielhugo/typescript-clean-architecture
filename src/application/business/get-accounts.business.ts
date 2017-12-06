@@ -1,15 +1,13 @@
 import { Account, ACCOUNT } from '../entities/data/account';
 import { User, USER } from '../entities/data/user';
 import { AccountContract } from '../entities/contracts/account.contract';
-import { UserContract } from '../entities/contracts/user.contract';
 
-export default class GetAccountBusiness {
+export default class GetAccountsBusiness {
   constructor(
-    private accountContract: AccountContract,
-    private userContract: UserContract
+    private accountContract: AccountContract
   ) { }
 
-  findByUserId(userId: number): Promise<Account[]> {
+  getByUserId(userId: number): Promise<Account[]> {
     return this.accountContract.findByUserId(userId);
   }
 
