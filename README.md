@@ -50,8 +50,8 @@ $ yarn start
 
 - Using npm
 ```bash
-$ yarn install
-$ yarn start
+$ npm install
+$ npm start
 ```
 
 ## Testing :warning: - Work in progress
