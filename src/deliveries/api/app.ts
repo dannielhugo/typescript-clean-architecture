@@ -68,6 +68,7 @@ class App {
     // Core injections
     this.injector.registerModule([
       [`${__dirname}/../../application/business/**/*.js`, { lifetime: Lifetime.SCOPED }],
+      [`${__dirname}/../../application/entities/services/**/*.js`, { lifetime: Lifetime.SCOPED }],
       [`${__dirname}/../../external/storages/${config.storage}/**/*.js`, { lifetime: Lifetime.SINGLETON }],
       [`${__dirname}/**/*.js`, { lifetime: Lifetime.SINGLETON }]
     ]);
