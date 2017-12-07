@@ -1,9 +1,11 @@
-import { User, USER } from '../entities/data/user';
+import { User } from '../entities/data/user';
 import { UserContract } from '../entities/contracts/user.contract';
+import ErrorService from '../entities/services/error.service';
 
 export default class CreateUserBusiness {
   constructor(
-    private userContract: UserContract
+    private userContract: UserContract,
+    private errorService: ErrorService
   ) { }
 
   async create(firstName: string, lastName: string, document: string): Promise<User> {
@@ -12,7 +14,7 @@ export default class CreateUserBusiness {
 
     // In case user already exists return a rejected promise
     if (user && Object.keys(user).length !== 0) {
-      return Promise.reject(USER.DUPLICATED_USER_ERROR);
+      await this.errorService.throw('user_exists');
     }
 
     return this.userContract.create(firstName, lastName, document);

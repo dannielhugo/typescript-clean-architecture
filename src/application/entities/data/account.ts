@@ -6,6 +6,5 @@ export interface Account {
 }
 
 export const ACCOUNT = {
-  MAX_ACCOUNTS_ERROR: 'account_limit_reached',
   MAX_ACCOUNTS_LIMIT: 5
 };
