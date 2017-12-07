@@ -53,6 +53,10 @@
       "check-module",
       "check-separator",
       "check-type"
+    ],
+    "max-line-length": [
+      true,
+      120
     ]
   }
 }

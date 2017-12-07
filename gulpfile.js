@@ -65,7 +65,7 @@ gulp.task("typedoc", () => {
 
 gulp.task('start', () => {
   const stream = nodemon({
-    script: 'build/delivery/api/index.js',
+    script: 'build/deliveries/api/index.js',
     ext: 'ts json',
     verbose: true,
     env: {
