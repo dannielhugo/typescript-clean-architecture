@@ -3,16 +3,20 @@ import { User } from '../../../application/entities/types/user';
 export default class UserCtrl {
   constructor() { }
 
-  create(req, res) {
+  async create(req, res) {
     const business = req.container.resolve('createUserBusiness');
 
-    return business
-      .create(
-      req.body.first_name,
-      req.body.last_name,
-      req.body.document
-      )
-      .then((user: User) => res.json({ status: 200, data: user }))
-      .catch((err) => res.status(500).json({ status: 500, error_type: 'system', errors: err }));
+    try {
+      const user: User = await business
+        .create(
+        req.body.first_name,
+        req.body.last_name,
+        req.body.document
+        );
+
+      res.json({ status: 200, data: user });
+    } catch (error) {
+      res.status(500).json({ status: 500, error_type: 'system', errors: error });
+    }
   }
 }
