@@ -1,5 +1,7 @@
 # Typescript Clean Architecture Example
 
+[![CircleCI](https://circleci.com/gh/dannielhugo/typescript-clean-architecture/tree/master.svg?style=svg)](https://circleci.com/gh/dannielhugo/typescript-clean-architecture/tree/master)
+
 :warning:  This is still under development!
 
 This is a simple implementation of an account management using typescript and
