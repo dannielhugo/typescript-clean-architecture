@@ -1,6 +1,6 @@
 {
   "name": "typescript-clean-architecture",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Typescript clean architecture implementantion.",
   "license": "MIT",
   "scripts": {

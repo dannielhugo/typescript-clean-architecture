@@ -58,6 +58,6 @@ $ npm install
 $ npm start
 ```
 
-## Testing :warning: - Work in progress
+## Testing
 
 Simply run `npm test` or `yarn test`
