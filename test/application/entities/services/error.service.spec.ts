@@ -14,7 +14,7 @@ describe('ErrorService', () => {
     } catch (e) {
       expect(e).toEqual({
         error: 'user_exists',
-        message: 'There user with supplied document already exists'
+        message: 'An user with supplied document already exists'
       });
     }
   });
