@@ -2,6 +2,9 @@ import { User } from '../entities/data/user';
 import { UserContract } from '../entities/contracts/user.contract';
 import ErrorService from '../entities/services/error.service';
 
+/**
+ * Business logic describing how to create an User
+ */
 export default class CreateUserBusiness {
   constructor(
     private userContract: UserContract,

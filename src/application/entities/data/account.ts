@@ -1,3 +1,7 @@
+
+/**
+ * Represents an Account
+ */
 export interface Account {
   id: number;
   description: string;

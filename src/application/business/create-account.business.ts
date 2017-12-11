@@ -4,6 +4,9 @@ import { AccountContract } from '../entities/contracts/account.contract';
 import { UserContract } from '../entities/contracts/user.contract';
 import ErrorService from '../entities/services/error.service';
 
+/**
+ * Business logic describing how to create an Account
+ */
 export default class CreateAccountBusiness {
   constructor(
     private accountContract: AccountContract,
