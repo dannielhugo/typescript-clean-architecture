@@ -1,3 +1,6 @@
+# 1.1.0 - More separation of concerns, add CI
+  - Add a contract to retrive error messages
+  - Add circle-ci integration
 
 # 1.0.1 - Bug fixes, more separation of concerns
   - Fix type coercing between express and application. 
