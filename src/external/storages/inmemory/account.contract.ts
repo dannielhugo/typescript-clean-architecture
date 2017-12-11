@@ -5,8 +5,6 @@ export default class InMemoryAccountContract implements AccountContract {
   private accounts: Account[] = [];
   private lastId = 1;
 
-  // TODO fix parameters type. So far express has been passing string parameters
-  // to business
   findByUserId(userId: number): Promise<Account[]> {
     return new Promise((resolve, reject) => {
       const accounts = this.accounts.filter((acc) => {
