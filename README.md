@@ -17,9 +17,10 @@ I used [awilix](https://github.com/jeffijoe/awilix) to develop a Dependency Inje
 ├── src
 |   ├── application           - Application files. The core of clean architecture
 |   |   ├── business          - Business logic goes here
-|   |   └── definitions       - Some interfaces and classes that defines our app.
+|   |   └── entities          - Some interfaces and classes that defines our app.
 |   |       ├── contracts     - Contracts between business and deliveries
-|   |       └── entities      - Application entities
+|   |       ├── types         - Application custom types and interfaces
+|   |       └── services      - Features that can be shared through the application
 |   ├── delivery              - Here is located all delivery options
 |   |   └── api               - API delivery. Here comes all API related logic
 |   |       ├── config        - Config folder
@@ -32,6 +33,7 @@ I used [awilix](https://github.com/jeffijoe/awilix) to develop a Dependency Inje
 |   └── external              - Some external dependencies, like databases, libraries, etc
 |       ├── plugins           - External plugins, like Lodash
 |       └── storage           - Database implementations
+├── test                      - Application tests
 └── build                     - Compiled javascript files
 ```
 
