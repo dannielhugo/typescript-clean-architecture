@@ -1,4 +1,4 @@
-import { User } from '../data/user';
+import { User } from '../types/user';
 
 /**
  * Interface that describes user functions

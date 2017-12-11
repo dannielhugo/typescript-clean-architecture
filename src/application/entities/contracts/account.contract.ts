@@ -1,4 +1,4 @@
-import { Account } from '../data/account';
+import { Account } from '../types/account';
 
 /**
  * Interface that describes account functions

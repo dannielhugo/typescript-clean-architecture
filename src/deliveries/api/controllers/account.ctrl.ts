@@ -1,4 +1,4 @@
-import { Account } from '../../../application/entities/data/account';
+import { Account } from '../../../application/entities/types/account';
 
 export default class AccountCtrl {
   constructor() { }

@@ -1,5 +1,6 @@
-import { Account } from '../entities/data/account';
-import { User } from '../entities/data/user';
+import { Account } from '../entities/types/account';
+import { User } from '../entities/types/user';
+
 import { AccountContract } from '../entities/contracts/account.contract';
 
 /**

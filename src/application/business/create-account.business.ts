@@ -1,7 +1,10 @@
-import { Account, ACCOUNT } from '../entities/data/account';
-import { User } from '../entities/data/user';
+import { Account, ACCOUNT } from '../entities/types/account';
+import { User } from '../entities/types/user';
+import { ErrorType } from '../entities/types/error-type';
+
 import { AccountContract } from '../entities/contracts/account.contract';
 import { UserContract } from '../entities/contracts/user.contract';
+
 import ErrorService from '../entities/services/error.service';
 
 /**
@@ -19,13 +22,13 @@ export default class CreateAccountBusiness {
       .findById(userId);
 
     if (!user || Object.keys(user).length === 0) {
-      await this.errorService.throw('user_not_found', { id: userId });
+      await this.errorService.throw(ErrorType.USER_NOT_FOUND, { id: userId });
     }
 
     const accounts: Account[] = await this.accountContract.findByUserId(user.id);
 
     if (accounts.length >= ACCOUNT.MAX_ACCOUNTS_LIMIT) {
-      await this.errorService.throw('max_accounts_reached');
+      await this.errorService.throw(ErrorType.MAX_ACCOUNTS_REACHED);
     }
 
     return this.accountContract.create(userId, description, balance);

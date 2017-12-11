@@ -3,8 +3,8 @@ import * as _ from 'lodash';
 import CreateAccountBusiness from './../../../src/application/business/create-account.business';
 import { UserContract } from './../../../src/application/entities/contracts/user.contract';
 import { AccountContract } from './../../../src/application/entities/contracts/account.contract';
-import { User } from './../../../src/application/entities/data/user';
-import { Account, ACCOUNT } from './../../../src/application/entities/data/account';
+import { User } from './../../../src/application/entities/types/user';
+import { Account, ACCOUNT } from './../../../src/application/entities/types/account';
 import ErrorService from '../../../src/application/entities/services/error.service';
 
 describe('CreateAccountBusiness', () => {
@@ -34,9 +34,7 @@ describe('CreateAccountBusiness', () => {
     );
 
     try {
-
       await createAccountBusiness.create(1, 'My account', 1000);
-
     } catch (e) {
       expect(e).toEqual({
         error: 'user_not_found',

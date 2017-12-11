@@ -1,5 +1,8 @@
-import { User } from '../entities/data/user';
+import { User } from '../entities/types/user';
+import { ErrorType } from '../entities/types/error-type';
+
 import { UserContract } from '../entities/contracts/user.contract';
+
 import ErrorService from '../entities/services/error.service';
 
 /**
@@ -17,7 +20,7 @@ export default class CreateUserBusiness {
 
     // In case user already exists return a rejected promise
     if (user && Object.keys(user).length !== 0) {
-      await this.errorService.throw('user_exists');
+      await this.errorService.throw(ErrorType.USER_EXISTS);
     }
 
     return this.userContract.create(firstName, lastName, document);

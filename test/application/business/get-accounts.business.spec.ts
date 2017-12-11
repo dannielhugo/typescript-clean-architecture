@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 import GetAccountsBusiness from './../../../src/application/business/get-accounts.business';
 import { AccountContract } from './../../../src/application/entities/contracts/account.contract';
-import { Account, ACCOUNT } from './../../../src/application/entities/data/account';
+import { Account, ACCOUNT } from './../../../src/application/entities/types/account';
 
 
 describe('GetAccountsBusiness', () => {

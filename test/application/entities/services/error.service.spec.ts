@@ -1,44 +1,57 @@
 import ErrorService from '../../../../src/application/entities/services/error.service';
+import { ErrorContract } from '../../../../src/application/entities/contracts/error.contract';
+import { ErrorType } from '../../../../src/application/entities/types/error-type';
+
+const MESSAGES = {
+  SERVER_ERROR: 'An internal server error occurred',
+  USER_EXISTS: 'An user with supplied document already exists',
+  USER_NOT_FOUND: 'The user \':id\' was not found'
+};
 
 describe('ErrorService', () => {
-  let errorService;
+  let errorService: ErrorService;
 
   beforeAll(() => {
-    errorService = new ErrorService();
+    const ErrorContractMock = jest.fn<ErrorContract>(() => ({
+      getError: jest.fn(async (error: ErrorType) => {
+        return Promise.resolve(MESSAGES[ErrorType[error]]);
+      })
+    }));
+    errorService = new ErrorService(new ErrorContractMock());
   });
 
 
   it('should return a rejected promise with an existing error', async () => {
     try {
-      await errorService.throw('user_exists');
+      await errorService.throw(ErrorType.USER_EXISTS);
     } catch (e) {
       expect(e).toEqual({
-        error: 'user_exists',
-        message: 'An user with supplied document already exists'
+        error: ErrorType[ErrorType.USER_EXISTS],
+        message: MESSAGES.USER_EXISTS
       });
     }
   });
 
   it('should return a rejected promise with an generical error if it is not defined', async () => {
     try {
-      await errorService.throw('this_error_does_not_exists');
+      await errorService.throw(0);
     } catch (e) {
       expect(e).toEqual({
-        error: 'server_error',
-        message: 'An internal server error occurred'
+        error: ErrorType[ErrorType.SERVER_ERROR],
+        message: MESSAGES.SERVER_ERROR
       });
     }
   });
 
   it('should return a formatted error', async () => {
     try {
-      await errorService.throw('user_not_found', {
+      await errorService.throw(ErrorType.USER_NOT_FOUND, {
         id: 1
       });
 
     } catch (e) {
       expect(e).toEqual({
-        error: 'user_not_found',
+        error: ErrorType[ErrorType.USER_NOT_FOUND],
         message: 'The user \'1\' was not found'
       });
     }
@@ -47,14 +60,14 @@ describe('ErrorService', () => {
 
   it('should not fail for invalid parameters', async () => {
     try {
-      await errorService.throw('user_not_found', {
+      await errorService.throw(ErrorType.USER_NOT_FOUND, {
         id: 1,
         this_not_exists: 1
       });
 
     } catch (e) {
       expect(e).toEqual({
-        error: 'user_not_found',
+        error: ErrorType[ErrorType.USER_NOT_FOUND],
         message: 'The user \'1\' was not found'
       });
     }
@@ -62,13 +75,13 @@ describe('ErrorService', () => {
 
   it('should not fail for not supplied parameter', async () => {
     try {
-      await errorService.throw('user_not_found', {
+      await errorService.throw(ErrorType.USER_NOT_FOUND, {
         this_not_exists: 1
       });
 
     } catch (e) {
       expect(e).toEqual({
-        error: 'user_not_found',
+        error: ErrorType[ErrorType.USER_NOT_FOUND],
         message: 'The user \':id\' was not found'
       });
     }

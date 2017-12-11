@@ -1,5 +1,5 @@
 import { AccountContract } from '../../../application/entities/contracts/account.contract';
-import { Account } from '../../../application/entities/data/account';
+import { Account } from '../../../application/entities/types/account';
 
 export default class InMemoryAccountContract implements AccountContract {
   private accounts: Account[] = [];

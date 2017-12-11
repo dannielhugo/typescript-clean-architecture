@@ -1,6 +1,6 @@
 import CreateUserBusiness from './../../../src/application/business/create-user.business';
 import { UserContract } from './../../../src/application/entities/contracts/user.contract';
-import { User } from './../../../src/application/entities/data/user';
+import { User } from './../../../src/application/entities/types/user';
 import ErrorService from '../../../src/application/entities/services/error.service';
 
 describe('CreateUserBusiness', () => {

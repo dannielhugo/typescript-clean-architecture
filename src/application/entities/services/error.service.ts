@@ -1,31 +1,38 @@
-import { ERROR_MESSAGE } from '../data/error-message';
+import { ErrorContract } from '../contracts/error.contract';
+import { ErrorType } from '../types/error-type';
 
 /**
  * Represents an error with an identifier and a message
  */
-type ErrorType = { error: string, message: string };
+export type Err = { error: string, message: string };
 
 /**
  * Service responsible for managing error messages
  */
 export default class ErrorService {
-  constructor() { }
+  constructor(
+    private errorContract: ErrorContract
+  ) { }
 
   /**
    * Returns a rejected promise with the error message correctly described
    */
-  async throw(error: string, parameteres?: { [index: string]: any }): Promise<ErrorType> {
-    let err: ErrorType;
+  async throw(error: ErrorType, parameteres?: { [index: string]: any }): Promise<Err> {
+    let err: Err;
 
-    if (ERROR_MESSAGE[error]) {
+    const message = await this.errorContract.getError(error);
+
+    if (message) {
       err = {
-        error: error,
-        message: ERROR_MESSAGE[error]
+        error: ErrorType[error],
+        message: message
       };
     } else {
+      const serverErrorMessage = await this.errorContract.getError(ErrorType.SERVER_ERROR);
+
       err = {
         error: 'server_error',
-        message: ERROR_MESSAGE.server_error
+        message: serverErrorMessage || 'A server error occurred'
       };
     }
 
