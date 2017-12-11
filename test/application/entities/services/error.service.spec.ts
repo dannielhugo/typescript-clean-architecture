@@ -11,7 +11,7 @@ const MESSAGES = {
 describe('ErrorService', () => {
   let errorService: ErrorService;
 
-  beforeAll(() => {
+  beforeEach(() => {
     const ErrorContractMock = jest.fn<ErrorContract>(() => ({
       getError: jest.fn(async (error: ErrorType) => {
         return Promise.resolve(MESSAGES[ErrorType[error]]);
@@ -34,11 +34,30 @@ describe('ErrorService', () => {
 
   it('should return a rejected promise with an generical error if it is not defined', async () => {
     try {
-      await errorService.throw(0);
+      await errorService.throw(100);
     } catch (e) {
       expect(e).toEqual({
         error: ErrorType[ErrorType.SERVER_ERROR],
         message: MESSAGES.SERVER_ERROR
+      });
+    }
+  });
+
+  it('should return a generic error message if even server error message is not defined', async () => {
+    const ErrorContractMock = jest.fn<ErrorContract>(() => ({
+      getError: jest.fn(async (error: ErrorType) => {
+        return Promise.resolve(null);
+      })
+    }));
+
+    errorService = new ErrorService(new ErrorContractMock());
+
+    try {
+      await errorService.throw(100);
+    } catch (e) {
+      expect(e).toEqual({
+        error: 'SERVER_ERROR',
+        message: 'A server error occurred'
       });
     }
   });

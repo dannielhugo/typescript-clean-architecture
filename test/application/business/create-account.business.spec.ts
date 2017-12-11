@@ -6,6 +6,7 @@ import { AccountContract } from './../../../src/application/entities/contracts/a
 import { User } from './../../../src/application/entities/types/user';
 import { Account, ACCOUNT } from './../../../src/application/entities/types/account';
 import ErrorService from '../../../src/application/entities/services/error.service';
+import { ErrorType } from '../../../src/application/entities/types/error-type';
 
 describe('CreateAccountBusiness', () => {
   it('should return error when user do not exists', async () => {
@@ -41,7 +42,7 @@ describe('CreateAccountBusiness', () => {
         message: 'The user \'1\' was not found'
       });
 
-      expect(errorService.throw).toBeCalledWith('user_not_found', { id: 1 });
+      expect(errorService.throw).toBeCalledWith(ErrorType.USER_NOT_FOUND, { id: 1 });
     }
   });
 
@@ -80,7 +81,7 @@ describe('CreateAccountBusiness', () => {
         message: 'The user \'1\' was not found'
       });
 
-      expect(errorService.throw).toBeCalledWith('user_not_found', { id: 1 });
+      expect(errorService.throw).toBeCalledWith(ErrorType.USER_NOT_FOUND, { id: 1 });
     }
   });
 
@@ -121,7 +122,7 @@ describe('CreateAccountBusiness', () => {
         message: 'Cannot create more accounts for this user'
       });
 
-      expect(errorService.throw).toBeCalledWith('max_accounts_reached');
+      expect(errorService.throw).toBeCalledWith(ErrorType.MAX_ACCOUNTS_REACHED);
     }
   });
 

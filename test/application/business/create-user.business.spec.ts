@@ -2,6 +2,7 @@ import CreateUserBusiness from './../../../src/application/business/create-user.
 import { UserContract } from './../../../src/application/entities/contracts/user.contract';
 import { User } from './../../../src/application/entities/types/user';
 import ErrorService from '../../../src/application/entities/services/error.service';
+import { ErrorType } from '../../../src/application/entities/types/error-type';
 
 describe('CreateUserBusiness', () => {
   it('should return error when user already exists', async () => {
@@ -34,7 +35,7 @@ describe('CreateUserBusiness', () => {
         message: 'This user already exists'
       });
 
-      expect(errorServiceMock.throw).toBeCalledWith('user_exists');
+      expect(errorServiceMock.throw).toBeCalledWith(ErrorType.USER_EXISTS);
     }
   });
 

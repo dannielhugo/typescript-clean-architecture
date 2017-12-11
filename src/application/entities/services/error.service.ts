@@ -31,7 +31,7 @@ export default class ErrorService {
       const serverErrorMessage = await this.errorContract.getError(ErrorType.SERVER_ERROR);
 
       err = {
-        error: 'server_error',
+        error: 'SERVER_ERROR',
         message: serverErrorMessage || 'A server error occurred'
       };
     }
