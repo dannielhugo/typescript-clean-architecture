@@ -94,6 +94,12 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_entities_services_error_service_.errorservice.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_entities_services_error_service_.errorservice.html#errorcontract" class="tsd-kind-icon">error<wbr>Contract</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
@@ -110,18 +116,37 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Error<wbr>Service<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_entities_services_error_service_.errorservice.html" class="tsd-signature-type">ErrorService</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Error<wbr>Service<span class="tsd-signature-symbol">(</span>errorContract<span class="tsd-signature-symbol">: </span><a href="../interfaces/_entities_contracts_error_contract_.errorcontract.html" class="tsd-signature-type">ErrorContract</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_entities_services_error_service_.errorservice.html" class="tsd-signature-type">ErrorService</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/05a1346/src/application/entities/services/error.service.ts#L11">entities/services/error.service.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/services/error.service.ts#L12">entities/services/error.service.ts:12</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>errorContract: <a href="../interfaces/_entities_contracts_error_contract_.errorcontract.html" class="tsd-signature-type">ErrorContract</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_entities_services_error_service_.errorservice.html" class="tsd-signature-type">ErrorService</a></h4>
 						</li>
 					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="errorcontract" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> error<wbr>Contract</h3>
+					<div class="tsd-signature tsd-kind-icon">error<wbr>Contract<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_entities_contracts_error_contract_.errorcontract.html" class="tsd-signature-type">ErrorContract</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/services/error.service.ts#L14">entities/services/error.service.ts:14</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -136,7 +161,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/05a1346/src/application/entities/services/error.service.ts#L42">entities/services/error.service.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/services/error.service.ts#L49">entities/services/error.service.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -166,13 +191,13 @@
 					<a name="throw" class="tsd-anchor"></a>
 					<h3>throw</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">throw<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, parameteres<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_entities_services_error_service_.html#errortype" class="tsd-signature-type">ErrorType</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">throw<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><a href="../enums/_entities_types_error_type_.errortype.html" class="tsd-signature-type">ErrorType</a>, parameteres<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_entities_services_error_service_.html#err" class="tsd-signature-type">Err</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/05a1346/src/application/entities/services/error.service.ts#L17">entities/services/error.service.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/services/error.service.ts#L20">entities/services/error.service.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -183,7 +208,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>error: <span class="tsd-signature-type">string</span></h5>
+									<h5>error: <a href="../enums/_entities_types_error_type_.errortype.html" class="tsd-signature-type">ErrorType</a></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> parameteres: <span class="tsd-signature-type">object</span></h5>
@@ -194,7 +219,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_entities_services_error_service_.html#errortype" class="tsd-signature-type">ErrorType</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_entities_services_error_service_.html#err" class="tsd-signature-type">Err</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -219,19 +244,22 @@
 						<a href="../modules/_entities_contracts_account_contract_.html">"entities/contracts/account.contract"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_entities_contracts_error_contract_.html">"entities/contracts/error.contract"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_entities_contracts_user_contract_.html">"entities/contracts/user.contract"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_entities_data_account_.html">"entities/data/account"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_entities_data_error_message_.html">"entities/data/error-<wbr>message"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_entities_data_user_.html">"entities/data/user"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/_entities_services_error_service_.html">"entities/services/error.service"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_entities_types_account_.html">"entities/types/account"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_entities_types_error_type_.html">"entities/types/error-<wbr>type"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_entities_types_user_.html">"entities/types/user"</a>
 					</li>
 				</ul>
 			</nav>
@@ -245,6 +273,9 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="_entities_services_error_service_.errorservice.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_entities_services_error_service_.errorservice.html#errorcontract" class="tsd-kind-icon">error<wbr>Contract</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="_entities_services_error_service_.errorservice.html#replaceplaceholders" class="tsd-kind-icon">replace<wbr>Placeholders</a>
 							</li>
@@ -255,8 +286,8 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_entities_services_error_service_.html#errortype" class="tsd-kind-icon">Error<wbr>Type</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_entities_services_error_service_.html#err" class="tsd-kind-icon">Err</a>
 					</li>
 				</ul>
 			</nav>

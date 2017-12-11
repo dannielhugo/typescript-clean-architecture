@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;entities/data/error-message&quot; | Typescript Clean Architecture</title>
+	<title>ErrorContract | Typescript Clean Architecture</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,27 +56,74 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_entities_data_error_message_.html">&quot;entities/data/error-message&quot;</a>
+					<a href="../modules/_entities_contracts_error_contract_.html">&quot;entities/contracts/error.contract&quot;</a>
+				</li>
+				<li>
+					<a href="_entities_contracts_error_contract_.errorcontract.html">ErrorContract</a>
 				</li>
 			</ul>
-			<h1>External module &quot;entities/data/error-message&quot;</h1>
+			<h1>Interface ErrorContract</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p> Interface that describes error functions</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ErrorContract</span>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/_entities_data_error_message_.error_message.html" class="tsd-kind-icon">ERROR_<wbr>MESSAGE</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_entities_contracts_error_contract_.errorcontract.html#geterror" class="tsd-kind-icon">get<wbr>Error</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="geterror" class="tsd-anchor"></a>
+					<h3>get<wbr>Error</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Error<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><a href="../enums/_entities_types_error_type_.errortype.html" class="tsd-signature-type">ErrorType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/contracts/error.contract.ts#L7">entities/contracts/error.contract.ts:7</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>error: <a href="../enums/_entities_types_error_type_.errortype.html" class="tsd-signature-type">ErrorType</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span>
+							</h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -87,39 +134,51 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_business_create_account_business_.html">"business/create-<wbr>account.business"</a>
+						<a href="../modules/_business_create_account_business_.html">"business/create-<wbr>account.business"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_business_create_user_business_.html">"business/create-<wbr>user.business"</a>
+						<a href="../modules/_business_create_user_business_.html">"business/create-<wbr>user.business"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_business_get_accounts_business_.html">"business/get-<wbr>accounts.business"</a>
+						<a href="../modules/_business_get_accounts_business_.html">"business/get-<wbr>accounts.business"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_entities_contracts_account_contract_.html">"entities/contracts/account.contract"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_entities_contracts_user_contract_.html">"entities/contracts/user.contract"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_entities_data_account_.html">"entities/data/account"</a>
+						<a href="../modules/_entities_contracts_account_contract_.html">"entities/contracts/account.contract"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_entities_data_error_message_.html">"entities/data/error-<wbr>message"</a>
+						<a href="../modules/_entities_contracts_error_contract_.html">"entities/contracts/error.contract"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_entities_data_user_.html">"entities/data/user"</a>
+						<a href="../modules/_entities_contracts_user_contract_.html">"entities/contracts/user.contract"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_entities_services_error_service_.html">"entities/services/error.service"</a>
+						<a href="../modules/_entities_services_error_service_.html">"entities/services/error.service"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_entities_types_account_.html">"entities/types/account"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_entities_types_error_type_.html">"entities/types/error-<wbr>type"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_entities_types_user_.html">"entities/types/user"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_entities_data_error_message_.error_message.html" class="tsd-kind-icon">ERROR_<wbr>MESSAGE</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_entities_contracts_error_contract_.errorcontract.html" class="tsd-kind-icon">Error<wbr>Contract</a>
+						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_entities_contracts_error_contract_.errorcontract.html#geterror" class="tsd-kind-icon">get<wbr>Error</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>
