@@ -47,6 +47,8 @@ class App {
     this.express.use(bodyParser.urlencoded({ extended: false }));
     this.router = express.Router();
     this.container = createContainer();
+    this.container.register({ router: asValue(this.router) });
+
     this.injectModules();
     this.injectStorage();
     this.injectFiles();
@@ -66,7 +68,6 @@ class App {
 
   // Inject base app Modules
   private injectModules(): void {
-    this.container.register({ router: asValue(this.router) });
     // Core injections
     this.registerModule([
       [`${__dirname}/../../application/business/**/*.js`, { lifetime: Lifetime.SCOPED }],
@@ -150,7 +151,7 @@ class App {
     this.container.register(reg);
   }
 
-  registerModule(
+  private registerModule(
     globPattern,
     formatName?
   ): void {
@@ -164,13 +165,11 @@ class App {
     });
   }
 
-  list(globPattern) {
+  private list(globPattern) {
     return listModules(globPattern, {
       cwd: '.'
     });
   }
-
-
 }
 
 export default new App().express;

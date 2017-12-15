@@ -1,3 +1,11 @@
+# 1.2.0 - Some refactoring, new business logic
+  - Add addBalance business, tests and endpoint
+  - Rename entities/contracts into entities/repositories
+  - Rename external/contracts into external/repositories
+  - Refactor app.ts to load external repositories as instance of a repository
+  - Refactor schama injection 
+  - Update awilix
+
 # 1.1.0 - More separation of concerns, add CI
   - Add a contract to retrive error messages
   - Add circle-ci integration
