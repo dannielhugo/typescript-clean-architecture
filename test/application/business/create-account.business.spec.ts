@@ -35,7 +35,7 @@ describe('CreateAccountBusiness', () => {
     );
 
     try {
-      await createAccountBusiness.create(1, 'My account', 1000);
+      await createAccountBusiness.execute(1, 'My account', 1000);
     } catch (e) {
       expect(e).toEqual({
         error: 'user_not_found',
@@ -73,7 +73,7 @@ describe('CreateAccountBusiness', () => {
     );
     try {
 
-      await createAccountBusiness.create(1, 'My account', 1000);
+      await createAccountBusiness.execute(1, 'My account', 1000);
 
     } catch (e) {
       expect(e).toEqual({
@@ -115,7 +115,7 @@ describe('CreateAccountBusiness', () => {
     );
 
     try {
-      await createAccountBusiness.create(1, 'My account', 1000);
+      await createAccountBusiness.execute(1, 'My account', 1000);
     } catch (e) {
       expect(e).toEqual({
         error: 'max_accounts_reached',
@@ -149,7 +149,7 @@ describe('CreateAccountBusiness', () => {
       new ErrorServiceMock()
     );
 
-    const account: Account = await createAccountBusiness.create(1, 'My account', 1000);
+    const account: Account = await createAccountBusiness.execute(1, 'My account', 1000);
 
     expect(accountMock.create).toBeCalled();
   });
@@ -178,7 +178,7 @@ describe('CreateAccountBusiness', () => {
       new ErrorServiceMock()
     );
 
-    const account: Account = await createAccountBusiness.create(1, 'My account', 1000);
+    const account: Account = await createAccountBusiness.execute(1, 'My account', 1000);
 
     expect(accountMock.create).toBeCalled();
   });

@@ -17,7 +17,7 @@ describe('GetAccountsBusiness', () => {
       new AccountMock()
     );
 
-    const accounts: Account[] = await getAccountBusiness.getByUserId(1);
+    const accounts: Account[] = await getAccountBusiness.execute(1);
 
     expect(accounts.length).toBe(0);
 
@@ -37,7 +37,7 @@ describe('GetAccountsBusiness', () => {
       new AccountMock()
     );
 
-    const accounts: Account[] = await getAccountBusiness.getByUserId(1);
+    const accounts: Account[] = await getAccountBusiness.execute(1);
 
     expect(accounts.length).toBe(ACCOUNT.MAX_ACCOUNTS_LIMIT);
 

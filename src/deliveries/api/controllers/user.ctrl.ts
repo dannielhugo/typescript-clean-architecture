@@ -8,7 +8,7 @@ export default class UserCtrl {
 
     try {
       const user: User = await business
-        .create(
+        .execute(
         req.body.first_name,
         req.body.last_name,
         req.body.document

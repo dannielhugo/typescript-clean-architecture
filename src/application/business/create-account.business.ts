@@ -17,7 +17,7 @@ export default class CreateAccountBusiness {
     private errorService: ErrorService
   ) { }
 
-  async create(userId: number, description: string, balance: number): Promise<Account> {
+  async execute(userId: number, description: string, balance: number): Promise<Account> {
     const user: User = await this.userRepository
       .findById(userId);
 

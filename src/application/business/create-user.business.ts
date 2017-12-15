@@ -14,7 +14,7 @@ export default class CreateUserBusiness {
     private errorService: ErrorService
   ) { }
 
-  async create(firstName: string, lastName: string, document: string): Promise<User> {
+  async execute(firstName: string, lastName: string, document: string): Promise<User> {
     const user: User = await this.userRepository
       .findByDocument(document);
 

@@ -8,7 +8,7 @@ export default class AccountCtrl {
 
     try {
       const accounts: Account[] = await business
-        .getByUserId(req.params.userId);
+        .execute(req.params.userId);
       res.json({ status: 200, data: accounts });
     } catch (error) {
       res.status(500).json({ status: 500, error_type: 'system', errors: error });
@@ -20,7 +20,7 @@ export default class AccountCtrl {
 
     try {
       const account: Account = await business
-        .create(
+        .execute(
         parseInt(req.params.userId),
         req.body.description,
         req.body.balance

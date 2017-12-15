@@ -11,7 +11,7 @@ export default class GetAccountsBusiness {
     private accountRepository: AccountRepository
   ) { }
 
-  getByUserId(userId: number): Promise<Account[]> {
+  execute(userId: number): Promise<Account[]> {
     return this.accountRepository.findByUserId(userId);
   }
 

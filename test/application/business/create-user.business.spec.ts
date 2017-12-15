@@ -28,7 +28,7 @@ describe('CreateUserBusiness', () => {
     );
 
     try {
-      await createUserBusiness.create('name', 'lastname', 'doc');
+      await createUserBusiness.execute('name', 'lastname', 'doc');
     } catch (e) {
       expect(e).toEqual({
         error: 'user_exists',
@@ -56,7 +56,7 @@ describe('CreateUserBusiness', () => {
       new ErrorServiceMock()
     );
 
-    const user: User = await createUserBusiness.create('name', 'lastname', 'doc');
+    const user: User = await createUserBusiness.execute('name', 'lastname', 'doc');
 
     expect(mock.create).toBeCalled();
   });
@@ -78,7 +78,7 @@ describe('CreateUserBusiness', () => {
       new ErrorServiceMock()
     );
 
-    const user: User = await createUserBusiness.create('name', 'lastname', 'doc');
+    const user: User = await createUserBusiness.execute('name', 'lastname', 'doc');
 
     expect(mock.create).toBeCalled();
   });
