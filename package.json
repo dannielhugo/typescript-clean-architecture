@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "ajv": "^5.1.5",
-    "awilix": "^2.3.0",
+    "awilix": "^3.0.0",
     "body-parser": "^1.17.2",
     "camelcase": "^4.1.0",
     "debug": "^2.6.8",

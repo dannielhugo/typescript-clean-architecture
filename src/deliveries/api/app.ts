@@ -11,13 +11,13 @@ import {
   AwilixContainer,
   Lifetime,
   asValue,
-  asClass,
   createContainer,
-  ResolutionMode,
-  listModules
+  InjectionMode
 } from 'awilix';
 
-import { InjectorPlugin } from './plugins/injector.plugin';
+import { NameFormatter } from 'awilix/lib/load-modules';
+import { listModules } from 'awilix/lib/list-modules';
+
 import { config } from './config/config';
 
 interface Request extends express.Request {
@@ -30,7 +30,7 @@ class App {
 
   // ref to Express instance
   public express: express.Application;
-  public injector: InjectorPlugin;
+  public container: AwilixContainer;
   public router: express.Router;
 
   // Run configuration methods on the Express instance.
@@ -46,6 +46,7 @@ class App {
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
     this.router = express.Router();
+    this.container = createContainer();
     this.injectModules();
     this.injectStorage();
     this.injectFiles();
@@ -54,7 +55,7 @@ class App {
     this.injectPlugins();
 
     this.express.use((req: Request, res, next) => {
-      req.container = this.injector.container.createScope();
+      req.container = this.container.createScope();
 
       req.container.register({
         user: asValue(req.user)
@@ -65,10 +66,9 @@ class App {
 
   // Inject base app Modules
   private injectModules(): void {
-    this.injector = new InjectorPlugin(createContainer, listModules, asValue, ResolutionMode, Lifetime);
-    this.injector.registerValue({ router: this.router });
+    this.container.register({ router: asValue(this.router) });
     // Core injections
-    this.injector.registerModule([
+    this.registerModule([
       [`${__dirname}/../../application/business/**/*.js`, { lifetime: Lifetime.SCOPED }],
       [`${__dirname}/../../application/entities/services/**/*.js`, { lifetime: Lifetime.SINGLETON }]
     ]);
@@ -87,24 +87,24 @@ class App {
       return camelcase(splat.join('.'));
     };
 
-    this.injector.registerModule([
+    this.registerModule([
       [`${__dirname}/../../external/repositories/${config.storage}/**/*.js`, { lifetime: Lifetime.SINGLETON }]
     ], formatter);
   }
 
   // Inject any other file that was not previosly registered
   private injectFiles(): void {
-    this.injector.registerModule([
+    this.registerModule([
       [`${__dirname}/**/*.js`, { lifetime: Lifetime.SINGLETON }]
     ]);
   }
 
   // Configure API endpoints.
   private routes(): void {
-    const routes = this.injector.list([`${__dirname}/routes/**/*.js`]);
+    const routes = this.list([`${__dirname}/routes/**/*.js`]);
 
     for (const route of routes) {
-      this.injector.container.resolve(camelcase(route.name));
+      this.container.resolve(camelcase(route.name));
     }
 
     this.express.use('/', this.router);
@@ -112,20 +112,20 @@ class App {
 
   // Inject Schemas
   private injectSchemas(): void {
-    const schemas = this.injector.list([`${__dirname}/schemas/**/*.js`]);
+    const schemas = this.list([`${__dirname}/schemas/**/*.js`]);
     const schemaList = {};
 
     for (const schema of schemas) {
       schemaList[camelcase(schema.name)] = require(schema.path);
     }
 
-    this.injector.registerValue({
+    this.registerValue({
       schemas: schemaList
     });
   }
 
   private injectExternalLibraries(): void {
-    this.injector.registerValue({
+    this.registerValue({
       'lodash': lodash,
       'ajv': ajv,
       'debug': debug
@@ -135,10 +135,42 @@ class App {
 
   // Inject Plugins
   private injectPlugins(): void {
-    this.injector.registerModule([
+    this.registerModule([
       [`${__dirname}/plugins/**/*.js`, { lifetime: Lifetime.SCOPED }]
     ]);
   }
+
+  private registerValue(value: { [key: string]: any }): void {
+    const reg = Object.keys(value).reduce((sofar, key) => {
+      sofar[key] = asValue(value[key]);
+
+      return sofar;
+    }, {});
+
+    this.container.register(reg);
+  }
+
+  registerModule(
+    globPattern,
+    formatName?
+  ): void {
+    this.container.loadModules(globPattern, {
+      formatName: formatName || 'camelCase',
+      cwd: '.',
+      resolverOptions: {
+        injectionMode: InjectionMode.CLASSIC,
+        lifetime: Lifetime.SINGLETON
+      }
+    });
+  }
+
+  list(globPattern) {
+    return listModules(globPattern, {
+      cwd: '.'
+    });
+  }
+
+
 }
 
 export default new App().express;
