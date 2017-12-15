@@ -17,4 +17,14 @@ export interface AccountRepository {
    * Creates a new account for user specified by userId
    */
   create(userId: number, description: string, balance: number): Promise<Account>;
+
+  /**
+   * Add balance to account specified by accountId
+   */
+  addBalance(accountId: number, amount: number): Promise<Account>;
+
+  /**
+   * Finds an account by its user's id
+   */
+  findByIdAndUserId(id: number, userId: number): Promise<Account>;
 }

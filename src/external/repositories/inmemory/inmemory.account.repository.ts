@@ -39,4 +39,22 @@ export default class InMemoryAccountRepository implements AccountRepository {
       resolve(acc);
     });
   }
+
+  async addBalance(accountId: number, amount: number): Promise<Account> {
+    const account = await this.findById(accountId);
+
+    account.balance += amount;
+
+    return Promise.resolve(account);
+  }
+
+  findByIdAndUserId(id: number, userId: number): Promise<Account> {
+    return new Promise((resolve, reject) => {
+      const account = this.accounts.find((acc) => {
+        return acc.id === id && acc.userId === userId;
+      });
+
+      resolve(account || null);
+    });
+  }
 }

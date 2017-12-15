@@ -35,3 +35,18 @@ Content-type: application/json
 GET http://localhost:4422/users/1/accounts
 Content-type: application/json
 ```
+
+---
+
+### ADD BALANCE TO ACCOUNT
+
+```
+PUT http://localhost:4422/users/1/accounts/1/balance
+Content-type: application/json
+
+{
+    "amount": 100
+}
+```
+
+
