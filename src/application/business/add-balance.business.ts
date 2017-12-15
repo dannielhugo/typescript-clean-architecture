@@ -4,6 +4,9 @@ import ErrorService from '../entities/services/error.service';
 import { UserRepository } from '../entities/repositories/user.repository';
 import { ErrorType } from '../entities/types/error-type';
 
+/**
+ * Business logic describing how to add balance to accounts
+ */
 export default class AddBalanceBusiness {
   constructor(
     private accountRepository: AccountRepository,

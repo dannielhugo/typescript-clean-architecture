@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AccountContract | Typescript Clean Architecture</title>
+	<title>ErrorRepository | Typescript Clean Architecture</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_entities_contracts_account_contract_.html">&quot;entities/contracts/account.contract&quot;</a>
+					<a href="../modules/_entities_repositories_error_repository_.html">&quot;entities/repositories/error.repository&quot;</a>
 				</li>
 				<li>
-					<a href="_entities_contracts_account_contract_.accountcontract.html">AccountContract</a>
+					<a href="_entities_repositories_error_repository_.errorrepository.html">ErrorRepository</a>
 				</li>
 			</ul>
-			<h1>Interface AccountContract</h1>
+			<h1>Interface ErrorRepository</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface that describes account functions</p>
+						<p> Interface that describes error functions</p>
 					</div>
 				</div>
 			</section>
@@ -80,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">AccountContract</span>
+						<span class="target">ErrorRepository</span>
 					</li>
 				</ul>
 			</section>
@@ -91,9 +91,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_entities_contracts_account_contract_.accountcontract.html#create" class="tsd-kind-icon">create</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_entities_contracts_account_contract_.accountcontract.html#findbyid" class="tsd-kind-icon">find<wbr>ById</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_entities_contracts_account_contract_.accountcontract.html#findbyuserid" class="tsd-kind-icon">find<wbr>ByUser<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_entities_repositories_error_repository_.errorrepository.html#geterror" class="tsd-kind-icon">get<wbr>Error</a></li>
 							</ul>
 						</section>
 					</div>
@@ -102,92 +100,28 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="create" class="tsd-anchor"></a>
-					<h3>create</h3>
+					<a name="geterror" class="tsd-anchor"></a>
+					<h3>get<wbr>Error</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, balance<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_account_.account.html" class="tsd-signature-type">Account</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Error<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><a href="../enums/_entities_types_error_type_.errortype.html" class="tsd-signature-type">ErrorType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/contracts/account.contract.ts#L19">entities/contracts/account.contract.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/8c8cf7a/src/application/entities/repositories/error.repository.ts#L7">entities/repositories/error.repository.ts:7</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Creates a new account for user specified by userId</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>userId: <span class="tsd-signature-type">number</span></h5>
-								</li>
-								<li>
-									<h5>description: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>balance: <span class="tsd-signature-type">number</span></h5>
+									<h5>error: <a href="../enums/_entities_types_error_type_.errortype.html" class="tsd-signature-type">ErrorType</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_account_.account.html" class="tsd-signature-type">Account</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="findbyid" class="tsd-anchor"></a>
-					<h3>find<wbr>ById</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">find<wbr>ById<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_account_.account.html" class="tsd-signature-type">Account</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/contracts/account.contract.ts#L14">entities/contracts/account.contract.ts:14</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Finds an account by its id</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>id: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_account_.account.html" class="tsd-signature-type">Account</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="findbyuserid" class="tsd-anchor"></a>
-					<h3>find<wbr>ByUser<wbr>Id</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">find<wbr>ByUser<wbr>Id<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_account_.account.html" class="tsd-signature-type">Account</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/contracts/account.contract.ts#L10">entities/contracts/account.contract.ts:10</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Finds an account by its user&#39;s id</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>id: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_account_.account.html" class="tsd-signature-type">Account</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span>
+							</h4>
 						</li>
 					</ul>
 				</section>
@@ -200,6 +134,9 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_business_add_balance_business_.html">"business/add-<wbr>balance.business"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_business_create_account_business_.html">"business/create-<wbr>account.business"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -208,14 +145,14 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_business_get_accounts_business_.html">"business/get-<wbr>accounts.business"</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_entities_repositories_account_repository_.html">"entities/repositories/account.repository"</a>
+					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_entities_contracts_account_contract_.html">"entities/contracts/account.contract"</a>
+						<a href="../modules/_entities_repositories_error_repository_.html">"entities/repositories/error.repository"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_entities_contracts_error_contract_.html">"entities/contracts/error.contract"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_entities_contracts_user_contract_.html">"entities/contracts/user.contract"</a>
+						<a href="../modules/_entities_repositories_user_repository_.html">"entities/repositories/user.repository"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_entities_services_error_service_.html">"entities/services/error.service"</a>
@@ -236,16 +173,10 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_entities_contracts_account_contract_.accountcontract.html" class="tsd-kind-icon">Account<wbr>Contract</a>
+						<a href="_entities_repositories_error_repository_.errorrepository.html" class="tsd-kind-icon">Error<wbr>Repository</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_entities_contracts_account_contract_.accountcontract.html#create" class="tsd-kind-icon">create</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_entities_contracts_account_contract_.accountcontract.html#findbyid" class="tsd-kind-icon">find<wbr>ById</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_entities_contracts_account_contract_.accountcontract.html#findbyuserid" class="tsd-kind-icon">find<wbr>ByUser<wbr>Id</a>
+								<a href="_entities_repositories_error_repository_.errorrepository.html#geterror" class="tsd-kind-icon">get<wbr>Error</a>
 							</li>
 						</ul>
 					</li>

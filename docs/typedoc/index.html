@@ -65,6 +65,7 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="typescript-clean-architecture-example">Typescript Clean Architecture Example</h1>
+				<p><a href="https://circleci.com/gh/dannielhugo/typescript-clean-architecture/tree/master"><img src="https://circleci.com/gh/dannielhugo/typescript-clean-architecture/tree/master.svg?style=svg" alt="CircleCI"></a></p>
 				<p>:warning:  This is still under development!</p>
 				<p>This is a simple implementation of an account management using typescript and
 				Uncle Bob&#39;s Clean Architecture concepts.</p>
@@ -77,21 +78,23 @@
 ├── src
 |<span class="hljs-string">   ├── application           - Application files. The core of clean architecture
 </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   ├── business          - Business logic goes here
-</span>|<span class="hljs-string">   </span>|<span class="hljs-string">   └── definitions       - Some interfaces and classes that defines our app.
-</span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── contracts     - Contracts between business and deliveries
-</span>|<span class="hljs-string">   </span>|<span class="hljs-string">       └── entities      - Application entities
+</span>|<span class="hljs-string">   </span>|<span class="hljs-string">   └── entities          - Some interfaces and classes that defines our app.
+</span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── repositories  - Contracts between business and deliveries
+</span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── types         - Application custom types and interfaces
+</span>|<span class="hljs-string">   </span>|<span class="hljs-string">       └── services      - Features that can be shared through the application
 </span>|<span class="hljs-string">   ├── delivery              - Here is located all delivery options
 </span>|<span class="hljs-string">   </span>|<span class="hljs-string">   └── api               - API delivery. Here comes all API related logic
 </span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── config        - Config folder
 </span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── controllers   - Here lies all controllers
 </span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── middlewares   - Express middlewares goes here
 </span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── routes        - Express routes
+</span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── plugins       - API External plugins, like Lodash
 </span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── schemas       - JSON Schema definitions for input validation
 </span>|<span class="hljs-string">   </span>|<span class="hljs-string">       ├── index.ts      - API entrypoint
 </span>|<span class="hljs-string">   </span>|<span class="hljs-string">       └── app.ts        - Here is where all things are glued together
 </span>|<span class="hljs-string">   └── external              - Some external dependencies, like databases, libraries, etc
-</span>|<span class="hljs-string">       ├── plugins           - External plugins, like Lodash
-</span>|<span class="hljs-string">       └── storage           - Database implementations
+</span>|<span class="hljs-string">       └── repositories      - Contract implementations
+├── test                      - Application tests
 └── build                     - Compiled javascript files</span>
 </code></pre><h2 id="delivery-options">Delivery Options</h2>
 				<p>For now there is only one delivery option, which is being exposed as an API for account management.</p>
@@ -111,7 +114,7 @@ $ npm start
 </code></pre>
 					</li>
 				</ul>
-				<h2 id="testing-warning-work-in-progress">Testing :warning: - Work in progress</h2>
+				<h2 id="testing">Testing</h2>
 				<p>Simply run <code>npm test</code> or <code>yarn test</code></p>
 			</div>
 		</div>
@@ -120,6 +123,9 @@ $ npm start
 				<ul>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_business_add_balance_business_.html">"business/add-<wbr>balance.business"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_business_create_account_business_.html">"business/create-<wbr>account.business"</a>
@@ -131,13 +137,13 @@ $ npm start
 						<a href="modules/_business_get_accounts_business_.html">"business/get-<wbr>accounts.business"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_entities_contracts_account_contract_.html">"entities/contracts/account.contract"</a>
+						<a href="modules/_entities_repositories_account_repository_.html">"entities/repositories/account.repository"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_entities_contracts_error_contract_.html">"entities/contracts/error.contract"</a>
+						<a href="modules/_entities_repositories_error_repository_.html">"entities/repositories/error.repository"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_entities_contracts_user_contract_.html">"entities/contracts/user.contract"</a>
+						<a href="modules/_entities_repositories_user_repository_.html">"entities/repositories/user.repository"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_entities_services_error_service_.html">"entities/services/error.service"</a>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UserContract | Typescript Clean Architecture</title>
+	<title>AddBalanceBusiness | Typescript Clean Architecture</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_entities_contracts_user_contract_.html">&quot;entities/contracts/user.contract&quot;</a>
+					<a href="../modules/_business_add_balance_business_.html">&quot;business/add-balance.business&quot;</a>
 				</li>
 				<li>
-					<a href="_entities_contracts_user_contract_.usercontract.html">UserContract</a>
+					<a href="_business_add_balance_business_.addbalancebusiness.html">AddBalanceBusiness</a>
 				</li>
 			</ul>
-			<h1>Interface UserContract</h1>
+			<h1>Class AddBalanceBusiness</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Interface that describes user functions</p>
+						<p>Business logic describing how to add balance to accounts</p>
 					</div>
 				</div>
 			</section>
@@ -80,7 +80,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">UserContract</span>
+						<span class="target">AddBalanceBusiness</span>
 					</li>
 				</ul>
 			</section>
@@ -89,105 +89,121 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_business_add_balance_business_.addbalancebusiness.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_business_add_balance_business_.addbalancebusiness.html#accountrepository" class="tsd-kind-icon">account<wbr>Repository</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_business_add_balance_business_.addbalancebusiness.html#errorservice" class="tsd-kind-icon">error<wbr>Service</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_business_add_balance_business_.addbalancebusiness.html#userrepository" class="tsd-kind-icon">user<wbr>Repository</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_entities_contracts_user_contract_.usercontract.html#create" class="tsd-kind-icon">create</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_entities_contracts_user_contract_.usercontract.html#findbydocument" class="tsd-kind-icon">find<wbr>ByDocument</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_entities_contracts_user_contract_.usercontract.html#findbyid" class="tsd-kind-icon">find<wbr>ById</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_business_add_balance_business_.addbalancebusiness.html#execute" class="tsd-kind-icon">execute</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Add<wbr>Balance<wbr>Business<span class="tsd-signature-symbol">(</span>accountRepository<span class="tsd-signature-symbol">: </span><a href="../interfaces/_entities_repositories_account_repository_.accountrepository.html" class="tsd-signature-type">AccountRepository</a>, userRepository<span class="tsd-signature-symbol">: </span><a href="../interfaces/_entities_repositories_user_repository_.userrepository.html" class="tsd-signature-type">UserRepository</a>, errorService<span class="tsd-signature-symbol">: </span><a href="_entities_services_error_service_.errorservice.html" class="tsd-signature-type">ErrorService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_business_add_balance_business_.addbalancebusiness.html" class="tsd-signature-type">AddBalanceBusiness</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/8c8cf7a/src/application/business/add-balance.business.ts#L10">business/add-balance.business.ts:10</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>accountRepository: <a href="../interfaces/_entities_repositories_account_repository_.accountrepository.html" class="tsd-signature-type">AccountRepository</a></h5>
+								</li>
+								<li>
+									<h5>userRepository: <a href="../interfaces/_entities_repositories_user_repository_.userrepository.html" class="tsd-signature-type">UserRepository</a></h5>
+								</li>
+								<li>
+									<h5>errorService: <a href="_entities_services_error_service_.errorservice.html" class="tsd-signature-type">ErrorService</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_business_add_balance_business_.addbalancebusiness.html" class="tsd-signature-type">AddBalanceBusiness</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="accountrepository" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> account<wbr>Repository</h3>
+					<div class="tsd-signature tsd-kind-icon">account<wbr>Repository<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_entities_repositories_account_repository_.accountrepository.html" class="tsd-signature-type">AccountRepository</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/8c8cf7a/src/application/business/add-balance.business.ts#L12">business/add-balance.business.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="errorservice" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> error<wbr>Service</h3>
+					<div class="tsd-signature tsd-kind-icon">error<wbr>Service<span class="tsd-signature-symbol">:</span> <a href="_entities_services_error_service_.errorservice.html" class="tsd-signature-type">ErrorService</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/8c8cf7a/src/application/business/add-balance.business.ts#L14">business/add-balance.business.ts:14</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="userrepository" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> user<wbr>Repository</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Repository<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_entities_repositories_user_repository_.userrepository.html" class="tsd-signature-type">UserRepository</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/8c8cf7a/src/application/business/add-balance.business.ts#L13">business/add-balance.business.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="create" class="tsd-anchor"></a>
-					<h3>create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>firstName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, lastName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_user_.user.html" class="tsd-signature-type">User</a><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="execute" class="tsd-anchor"></a>
+					<h3>execute</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">execute<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, accountId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_entities_types_account_.account.html" class="tsd-signature-type">Account</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/contracts/user.contract.ts#L20">entities/contracts/user.contract.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/8c8cf7a/src/application/business/add-balance.business.ts#L17">business/add-balance.business.ts:17</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Creates a new user</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>firstName: <span class="tsd-signature-type">string</span></h5>
+									<h5>userId: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
-									<h5>lastName: <span class="tsd-signature-type">string</span></h5>
+									<h5>accountId: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
-									<h5>document: <span class="tsd-signature-type">string</span></h5>
+									<h5>amount: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_user_.user.html" class="tsd-signature-type">User</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="findbydocument" class="tsd-anchor"></a>
-					<h3>find<wbr>ByDocument</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">find<wbr>ByDocument<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_user_.user.html" class="tsd-signature-type">User</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/contracts/user.contract.ts#L10">entities/contracts/user.contract.ts:10</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Finds an user by its document</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>document: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_user_.user.html" class="tsd-signature-type">User</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="findbyid" class="tsd-anchor"></a>
-					<h3>find<wbr>ById</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">find<wbr>ById<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_user_.user.html" class="tsd-signature-type">User</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dannielhugo/typescript-clean-architecture/blob/75dba98/src/application/entities/contracts/user.contract.ts#L15">entities/contracts/user.contract.ts:15</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Finds an user by its id</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>id: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_entities_types_user_.user.html" class="tsd-signature-type">User</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_entities_types_account_.account.html" class="tsd-signature-type">Account</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -199,6 +215,9 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_business_add_balance_business_.html">"business/add-<wbr>balance.business"</a>
+					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_business_create_account_business_.html">"business/create-<wbr>account.business"</a>
 					</li>
@@ -209,13 +228,13 @@
 						<a href="../modules/_business_get_accounts_business_.html">"business/get-<wbr>accounts.business"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_entities_contracts_account_contract_.html">"entities/contracts/account.contract"</a>
+						<a href="../modules/_entities_repositories_account_repository_.html">"entities/repositories/account.repository"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_entities_contracts_error_contract_.html">"entities/contracts/error.contract"</a>
+						<a href="../modules/_entities_repositories_error_repository_.html">"entities/repositories/error.repository"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_entities_contracts_user_contract_.html">"entities/contracts/user.contract"</a>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_entities_repositories_user_repository_.html">"entities/repositories/user.repository"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_entities_services_error_service_.html">"entities/services/error.service"</a>
@@ -235,17 +254,23 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_entities_contracts_user_contract_.usercontract.html" class="tsd-kind-icon">User<wbr>Contract</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_business_add_balance_business_.addbalancebusiness.html" class="tsd-kind-icon">Add<wbr>Balance<wbr>Business</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_entities_contracts_user_contract_.usercontract.html#create" class="tsd-kind-icon">create</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_business_add_balance_business_.addbalancebusiness.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_entities_contracts_user_contract_.usercontract.html#findbydocument" class="tsd-kind-icon">find<wbr>ByDocument</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_business_add_balance_business_.addbalancebusiness.html#accountrepository" class="tsd-kind-icon">account<wbr>Repository</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_entities_contracts_user_contract_.usercontract.html#findbyid" class="tsd-kind-icon">find<wbr>ById</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_business_add_balance_business_.addbalancebusiness.html#errorservice" class="tsd-kind-icon">error<wbr>Service</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_business_add_balance_business_.addbalancebusiness.html#userrepository" class="tsd-kind-icon">user<wbr>Repository</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_business_add_balance_business_.addbalancebusiness.html#execute" class="tsd-kind-icon">execute</a>
 							</li>
 						</ul>
 					</li>

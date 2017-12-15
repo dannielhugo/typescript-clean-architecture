@@ -5,7 +5,7 @@ import { Account } from '../types/account';
  */
 export interface AccountRepository {
   /**
-   * Finds an account by its user's id
+   * Finds an account by its userId
    */
   findByUserId(id: number): Promise<Account[]>;
   /**
@@ -24,7 +24,7 @@ export interface AccountRepository {
   addBalance(accountId: number, amount: number): Promise<Account>;
 
   /**
-   * Finds an account by its user's id
+   * Finds an account by its id and userId
    */
   findByIdAndUserId(id: number, userId: number): Promise<Account>;
 }
