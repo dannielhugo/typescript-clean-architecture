@@ -3,8 +3,7 @@ export default function (
   router,
   jsonMiddleware,
   paramsMiddleware,
-  accountSchema,
-  addBalanceSchema,
+  schemas,
   accountCtrl
 ) {
   const validateParamMiddleware = paramsMiddleware({
@@ -19,14 +18,14 @@ export default function (
     )
     .post(
     validateParamMiddleware,
-    jsonMiddleware(accountSchema.schema),
+    jsonMiddleware(schemas.accountSchema.schema),
     accountCtrl.create
     );
 
   router.route('/users/:userId/accounts/:accountId/balance')
     .put(
     validateParamMiddleware,
-    jsonMiddleware(addBalanceSchema.schema),
+    jsonMiddleware(schemas.addBalanceSchema.schema),
     accountCtrl.addBalance
     );
 }

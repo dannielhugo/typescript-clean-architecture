@@ -113,12 +113,15 @@ class App {
   // Inject Schemas
   private injectSchemas(): void {
     const schemas = this.injector.list([`${__dirname}/schemas/**/*.js`]);
+    const schemaList = {};
 
     for (const schema of schemas) {
-      this.injector.registerValue({
-        [camelcase(schema.name)]: require(schema.path)
-      });
+      schemaList[camelcase(schema.name)] = require(schema.path);
     }
+
+    this.injector.registerValue({
+      schemas: schemaList
+    });
   }
 
   private injectExternalLibraries(): void {
