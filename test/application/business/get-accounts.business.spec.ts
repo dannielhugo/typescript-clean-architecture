@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 import GetAccountsBusiness from './../../../src/application/business/get-accounts.business';
-import { AccountContract } from './../../../src/application/entities/contracts/account.contract';
+import { AccountRepository } from './../../../src/application/entities/repositories/account.repository';
 import { Account, ACCOUNT } from './../../../src/application/entities/types/account';
 
 
@@ -9,7 +9,7 @@ describe('GetAccountsBusiness', () => {
   it('should return no accounts', async () => {
     expect.assertions(1);
 
-    const AccountMock = jest.fn<AccountContract>(() => ({
+    const AccountMock = jest.fn<AccountRepository>(() => ({
       findByUserId: (async () => [])
     }));
 
@@ -29,7 +29,7 @@ describe('GetAccountsBusiness', () => {
 
     const list: Account[] = <Account[]>_.fill(Array(ACCOUNT.MAX_ACCOUNTS_LIMIT), { id: 1 });
 
-    const AccountMock = jest.fn<AccountContract>(() => ({
+    const AccountMock = jest.fn<AccountRepository>(() => ({
       findByUserId: (async () => list)
     }));
 

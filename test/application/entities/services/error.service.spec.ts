@@ -1,5 +1,5 @@
 import ErrorService from '../../../../src/application/entities/services/error.service';
-import { ErrorContract } from '../../../../src/application/entities/contracts/error.contract';
+import { ErrorRepository } from '../../../../src/application/entities/repositories/error.repository';
 import { ErrorType } from '../../../../src/application/entities/types/error-type';
 
 const MESSAGES = {
@@ -12,12 +12,12 @@ describe('ErrorService', () => {
   let errorService: ErrorService;
 
   beforeEach(() => {
-    const ErrorContractMock = jest.fn<ErrorContract>(() => ({
+    const ErrorRepositoryMock = jest.fn<ErrorRepository>(() => ({
       getError: jest.fn(async (error: ErrorType) => {
         return Promise.resolve(MESSAGES[ErrorType[error]]);
       })
     }));
-    errorService = new ErrorService(new ErrorContractMock());
+    errorService = new ErrorService(new ErrorRepositoryMock());
   });
 
 
@@ -44,13 +44,13 @@ describe('ErrorService', () => {
   });
 
   it('should return a generic error message if even server error message is not defined', async () => {
-    const ErrorContractMock = jest.fn<ErrorContract>(() => ({
+    const ErrorRepositoryMock = jest.fn<ErrorRepository>(() => ({
       getError: jest.fn(async (error: ErrorType) => {
         return Promise.resolve(null);
       })
     }));
 
-    errorService = new ErrorService(new ErrorContractMock());
+    errorService = new ErrorService(new ErrorRepositoryMock());
 
     try {
       await errorService.throw(100);

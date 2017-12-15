@@ -3,7 +3,7 @@ import { Account } from '../types/account';
 /**
  * Interface that describes account functions
  */
-export interface AccountContract {
+export interface AccountRepository {
   /**
    * Finds an account by its user's id
    */

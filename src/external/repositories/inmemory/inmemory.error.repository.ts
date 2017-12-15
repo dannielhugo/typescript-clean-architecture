@@ -1,4 +1,4 @@
-import { ErrorContract } from '../../../application/entities/contracts/error.contract';
+import { ErrorRepository } from '../../../application/entities/repositories/error.repository';
 import { ErrorType } from '../../../application/entities/types/error-type';
 
 const MESSAGES = {
@@ -8,7 +8,7 @@ const MESSAGES = {
   MAX_ACCOUNTS_REACHED: 'Cannot create more accounts for this user'
 };
 
-export default class InMemoryErrorContract implements ErrorContract {
+export default class InMemororyErrorRepository implements ErrorRepository {
   getError(error: ErrorType): Promise<string> | Promise<null> {
     return Promise.resolve(MESSAGES[ErrorType[error]]);
   }

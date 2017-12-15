@@ -18,7 +18,7 @@ I used [awilix](https://github.com/jeffijoe/awilix) to develop a Dependency Inje
 |   ├── application           - Application files. The core of clean architecture
 |   |   ├── business          - Business logic goes here
 |   |   └── entities          - Some interfaces and classes that defines our app.
-|   |       ├── contracts     - Contracts between business and deliveries
+|   |       ├── repositories  - Contracts between business and deliveries
 |   |       ├── types         - Application custom types and interfaces
 |   |       └── services      - Features that can be shared through the application
 |   ├── delivery              - Here is located all delivery options
@@ -27,12 +27,12 @@ I used [awilix](https://github.com/jeffijoe/awilix) to develop a Dependency Inje
 |   |       ├── controllers   - Here lies all controllers
 |   |       ├── middlewares   - Express middlewares goes here
 |   |       ├── routes        - Express routes
+|   |       ├── plugins       - API External plugins, like Lodash
 |   |       ├── schemas       - JSON Schema definitions for input validation
 |   |       ├── index.ts      - API entrypoint
 |   |       └── app.ts        - Here is where all things are glued together
 |   └── external              - Some external dependencies, like databases, libraries, etc
-|       ├── plugins           - External plugins, like Lodash
-|       └── storage           - Database implementations
+|       └── repositories      - Contract implementations
 ├── test                      - Application tests
 └── build                     - Compiled javascript files
 ```

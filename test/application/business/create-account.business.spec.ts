@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
 
 import CreateAccountBusiness from './../../../src/application/business/create-account.business';
-import { UserContract } from './../../../src/application/entities/contracts/user.contract';
-import { AccountContract } from './../../../src/application/entities/contracts/account.contract';
+import { UserRepository } from './../../../src/application/entities/repositories/user.repository';
+import { AccountRepository } from './../../../src/application/entities/repositories/account.repository';
 import { User } from './../../../src/application/entities/types/user';
 import { Account, ACCOUNT } from './../../../src/application/entities/types/account';
 import ErrorService from '../../../src/application/entities/services/error.service';
@@ -11,11 +11,11 @@ import { ErrorType } from '../../../src/application/entities/types/error-type';
 describe('CreateAccountBusiness', () => {
   it('should return error when user do not exists', async () => {
     expect.assertions(2);
-    const UserMock = jest.fn<UserContract>(() => ({
+    const UserMock = jest.fn<UserRepository>(() => ({
       findById: jest.fn(async () => ({}))
     }));
 
-    const AccountMock = jest.fn<AccountContract>(() => ({}));
+    const AccountMock = jest.fn<AccountRepository>(() => ({}));
 
     const ErrorServiceMock = jest.fn<ErrorService>(() => ({
       throw: jest.fn(async () => {
@@ -49,7 +49,7 @@ describe('CreateAccountBusiness', () => {
   it('should return error when user do not exists (2)', async () => {
     expect.assertions(2);
 
-    const UserMock = jest.fn<UserContract>(() => ({
+    const UserMock = jest.fn<UserRepository>(() => ({
       findById: jest.fn(async () => (null))
     }));
 
@@ -64,7 +64,7 @@ describe('CreateAccountBusiness', () => {
 
     const errorService = new ErrorServiceMock();
 
-    const AccountMock = jest.fn<AccountContract>(() => ({}));
+    const AccountMock = jest.fn<AccountRepository>(() => ({}));
 
     const createAccountBusiness = new CreateAccountBusiness(
       new AccountMock(),
@@ -90,11 +90,11 @@ describe('CreateAccountBusiness', () => {
 
     const accounts: Account[] = <Account[]>_.fill(Array(ACCOUNT.MAX_ACCOUNTS_LIMIT), { id: 1 });
 
-    const UserMock = jest.fn<UserContract>(() => ({
+    const UserMock = jest.fn<UserRepository>(() => ({
       findById: jest.fn(async () => ({ id: 1 }))
     }));
 
-    const AccountMock = jest.fn<AccountContract>(() => ({
+    const AccountMock = jest.fn<AccountRepository>(() => ({
       findByUserId: jest.fn(async () => accounts)
     }));
 
@@ -129,11 +129,11 @@ describe('CreateAccountBusiness', () => {
   it('should create account (user having no accounts)', async () => {
     expect.assertions(1);
 
-    const UserMock = jest.fn<UserContract>(() => ({
+    const UserMock = jest.fn<UserRepository>(() => ({
       findById: jest.fn(async () => ({ id: 1 }))
     }));
 
-    const AccountMock = jest.fn<AccountContract>(() => ({
+    const AccountMock = jest.fn<AccountRepository>(() => ({
       findByUserId: jest.fn(async () => ([])),
       create: jest.fn(async () => (<Account>{ id: 1 }))
     }));
@@ -159,11 +159,11 @@ describe('CreateAccountBusiness', () => {
 
     const accounts: Account[] = <Account[]>_.fill(Array(ACCOUNT.MAX_ACCOUNTS_LIMIT - 1), { id: 1 });
 
-    const UserMock = jest.fn<UserContract>(() => ({
+    const UserMock = jest.fn<UserRepository>(() => ({
       findById: jest.fn(async () => (accounts)
     }));
 
-    const AccountMock = jest.fn<AccountContract>(() => ({
+    const AccountMock = jest.fn<AccountRepository>(() => ({
       findByUserId: jest.fn(async () => ([])),
       create: jest.fn(async () => (<Account>{ id: 1 }))
     }));

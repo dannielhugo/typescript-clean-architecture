@@ -1,7 +1,7 @@
 import { User } from '../entities/types/user';
 import { ErrorType } from '../entities/types/error-type';
 
-import { UserContract } from '../entities/contracts/user.contract';
+import { UserRepository } from '../entities/repositories/user.repository';
 
 import ErrorService from '../entities/services/error.service';
 
@@ -10,12 +10,12 @@ import ErrorService from '../entities/services/error.service';
  */
 export default class CreateUserBusiness {
   constructor(
-    private userContract: UserContract,
+    private userRepository: UserRepository,
     private errorService: ErrorService
   ) { }
 
   async create(firstName: string, lastName: string, document: string): Promise<User> {
-    const user: User = await this.userContract
+    const user: User = await this.userRepository
       .findByDocument(document);
 
     // In case user already exists return a rejected promise
@@ -23,6 +23,6 @@ export default class CreateUserBusiness {
       await this.errorService.throw(ErrorType.USER_EXISTS);
     }
 
-    return this.userContract.create(firstName, lastName, document);
+    return this.userRepository.create(firstName, lastName, document);
   }
 }

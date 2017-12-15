@@ -1,4 +1,4 @@
-import { ErrorContract } from '../contracts/error.contract';
+import { ErrorRepository } from '../repositories/error.repository';
 import { ErrorType } from '../types/error-type';
 
 /**
@@ -11,7 +11,7 @@ export type Err = { error: string, message: string };
  */
 export default class ErrorService {
   constructor(
-    private errorContract: ErrorContract
+    private errorRepository: ErrorRepository
   ) { }
 
   /**
@@ -20,7 +20,7 @@ export default class ErrorService {
   async throw(error: ErrorType, parameteres?: { [index: string]: any }): Promise<Err> {
     let err: Err;
 
-    const message = await this.errorContract.getError(error);
+    const message = await this.errorRepository.getError(error);
 
     if (message) {
       err = {
@@ -28,7 +28,7 @@ export default class ErrorService {
         message: message
       };
     } else {
-      const serverErrorMessage = await this.errorContract.getError(ErrorType.SERVER_ERROR);
+      const serverErrorMessage = await this.errorRepository.getError(ErrorType.SERVER_ERROR);
 
       err = {
         error: 'SERVER_ERROR',

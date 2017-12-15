@@ -1,5 +1,5 @@
 import CreateUserBusiness from './../../../src/application/business/create-user.business';
-import { UserContract } from './../../../src/application/entities/contracts/user.contract';
+import { UserRepository } from './../../../src/application/entities/repositories/user.repository';
 import { User } from './../../../src/application/entities/types/user';
 import ErrorService from '../../../src/application/entities/services/error.service';
 import { ErrorType } from '../../../src/application/entities/types/error-type';
@@ -7,7 +7,7 @@ import { ErrorType } from '../../../src/application/entities/types/error-type';
 describe('CreateUserBusiness', () => {
   it('should return error when user already exists', async () => {
     expect.assertions(2);
-    const UserContractMock = jest.fn<UserContract>(() => ({
+    const UserRepositoryMock = jest.fn<UserRepository>(() => ({
       findByDocument: jest.fn(async () => ({ user: 1 }))
     }));
 
@@ -23,7 +23,7 @@ describe('CreateUserBusiness', () => {
     const errorServiceMock = new ErrorServiceMock();
 
     const createUserBusiness = new CreateUserBusiness(
-      new UserContractMock(),
+      new UserRepositoryMock(),
       errorServiceMock
     );
 
@@ -42,14 +42,14 @@ describe('CreateUserBusiness', () => {
   it('should create user if user is not found (1)', async () => {
     expect.assertions(1);
 
-    const UserContractMock = jest.fn<UserContract>(() => ({
+    const UserRepositoryMock = jest.fn<UserRepository>(() => ({
       findByDocument: jest.fn(async () => ({})),
       create: jest.fn(async () => (<User>{ id: 1 })),
     }));
 
     const ErrorServiceMock = jest.fn<ErrorService>(() => ({}));
 
-    const mock = new UserContractMock();
+    const mock = new UserRepositoryMock();
 
     const createUserBusiness = new CreateUserBusiness(
       mock,
@@ -64,7 +64,7 @@ describe('CreateUserBusiness', () => {
   it('should create user if user is not found (2)', async () => {
     expect.assertions(1);
 
-    const Mock = jest.fn<UserContract>(() => ({
+    const Mock = jest.fn<UserRepository>(() => ({
       findByDocument: jest.fn(async () => null),
       create: jest.fn(async () => (<User>{ id: 1 })),
     }));

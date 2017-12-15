@@ -17,7 +17,7 @@ import {
   listModules
 } from 'awilix';
 
-import { Injector } from './config/injector';
+import { InjectorPlugin } from './plugins/injector.plugin';
 import { config } from './config/config';
 
 interface Request extends express.Request {
@@ -30,7 +30,7 @@ class App {
 
   // ref to Express instance
   public express: express.Application;
-  public injector: Injector;
+  public injector: InjectorPlugin;
   public router: express.Router;
 
   // Run configuration methods on the Express instance.
@@ -47,6 +47,8 @@ class App {
     this.express.use(bodyParser.urlencoded({ extended: false }));
     this.router = express.Router();
     this.injectModules();
+    this.injectStorage();
+    this.injectFiles();
     this.injectExternalLibraries();
     this.injectSchemas();
     this.injectPlugins();
@@ -63,16 +65,38 @@ class App {
 
   // Inject base app Modules
   private injectModules(): void {
-    this.injector = new Injector(createContainer, listModules, asValue, ResolutionMode, Lifetime);
+    this.injector = new InjectorPlugin(createContainer, listModules, asValue, ResolutionMode, Lifetime);
     this.injector.registerValue({ router: this.router });
     // Core injections
     this.injector.registerModule([
       [`${__dirname}/../../application/business/**/*.js`, { lifetime: Lifetime.SCOPED }],
-      [`${__dirname}/../../application/entities/services/**/*.js`, { lifetime: Lifetime.SINGLETON }],
-      [`${__dirname}/../../external/storages/${config.storage}/**/*.js`, { lifetime: Lifetime.SINGLETON }],
+      [`${__dirname}/../../application/entities/services/**/*.js`, { lifetime: Lifetime.SINGLETON }]
+    ]);
+  }
+
+  /**
+   *  Inject repository based on config.storage value.
+   *  With this we may be able to swap between repository storages
+   */
+  private injectStorage(): void {
+    // transform something.repo.repository into repoRepository
+    const formatter = <NameFormatter>(name, descriptor) => {
+      const splat = name.split('.');
+      splat.shift();
+
+      return camelcase(splat.join('.'));
+    };
+
+    this.injector.registerModule([
+      [`${__dirname}/../../external/repositories/${config.storage}/**/*.js`, { lifetime: Lifetime.SINGLETON }]
+    ], formatter);
+  }
+
+  // Inject any other file that was not previosly registered
+  private injectFiles(): void {
+    this.injector.registerModule([
       [`${__dirname}/**/*.js`, { lifetime: Lifetime.SINGLETON }]
     ]);
-
   }
 
   // Configure API endpoints.
@@ -109,7 +133,7 @@ class App {
   // Inject Plugins
   private injectPlugins(): void {
     this.injector.registerModule([
-      [`${__dirname}/../../external/plugins/**/*.js`, { lifetime: Lifetime.SCOPED }]
+      [`${__dirname}/plugins/**/*.js`, { lifetime: Lifetime.SCOPED }]
     ]);
   }
 }

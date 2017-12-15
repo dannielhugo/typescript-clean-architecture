@@ -1,7 +1,7 @@
-import { UserContract } from '../../../application/entities/contracts/user.contract';
+import { UserRepository } from '../../../application/entities/repositories/user.repository';
 import { User } from '../../../application/entities/types/user';
 
-export default class InMemoryUserContract implements UserContract {
+export default class InMemoryUserRepository implements UserRepository {
   private users: User[] = [];
   private lastId = 1;
 

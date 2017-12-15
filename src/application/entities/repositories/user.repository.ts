@@ -3,7 +3,7 @@ import { User } from '../types/user';
 /**
  * Interface that describes user functions
  */
-export interface UserContract {
+export interface UserRepository {
   /**
    * Finds an user by its document
    */

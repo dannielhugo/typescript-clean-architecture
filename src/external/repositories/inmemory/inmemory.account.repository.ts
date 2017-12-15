@@ -1,7 +1,7 @@
-import { AccountContract } from '../../../application/entities/contracts/account.contract';
+import { AccountRepository } from '../../../application/entities/repositories/account.repository';
 import { Account } from '../../../application/entities/types/account';
 
-export default class InMemoryAccountContract implements AccountContract {
+export default class InMemoryAccountRepository implements AccountRepository {
   private accounts: Account[] = [];
   private lastId = 1;
 

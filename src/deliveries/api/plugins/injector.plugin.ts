@@ -1,10 +1,11 @@
 import {
   AwilixContainer,
   RegistrationOptions,
-  ModuleDescriptor
+  ModuleDescriptor,
+  NameFormatter
 } from 'awilix';
 
-export class Injector {
+export class InjectorPlugin {
   public container: AwilixContainer;
 
   constructor(
@@ -27,9 +28,12 @@ export class Injector {
     this.container.register(reg);
   }
 
-  registerModule(globPattern: string[] | [string, RegistrationOptions][]): void {
+  registerModule(
+    globPattern: string[] | [string, RegistrationOptions][],
+    formatName: 'camelCase' | NameFormatter = 'camelCase'
+  ): void {
     this.container.loadModules(globPattern, {
-      formatName: 'camelCase',
+      formatName: formatName,
       cwd: '.',
       registrationOptions: {
         resolutionMode: this.ResolutionMode.CLASSIC,
