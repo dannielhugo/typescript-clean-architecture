@@ -2,16 +2,14 @@
 
 # compiled output
 /dist
-/build
 /tmp
 /out-tsc
-.gulp-cache
+/build
 
 # dependencies
 /node_modules
 
 # IDEs and editors
-.vscode/
 /.idea
 .project
 .classpath
@@ -22,10 +20,6 @@
 
 # IDE - VSCode
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 # misc
 /.sass-cache
@@ -35,6 +29,8 @@
 npm-debug.log
 testem.log
 /typings
+db-*.json
+web-api.json
 
 # e2e
 /e2e/*.js

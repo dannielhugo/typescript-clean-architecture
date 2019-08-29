@@ -1,63 +1,73 @@
-# Typescript Clean Architecture Example
+# Typescript Clean Architecture
 
-[![CircleCI](https://circleci.com/gh/dannielhugo/typescript-clean-architecture/tree/master.svg?style=svg)](https://circleci.com/gh/dannielhugo/typescript-clean-architecture/tree/master)
+## Intro
 
-:warning:  This is still under development!
+Typescript + Clean architecture
 
-This is a simple implementation of an account management using typescript and
-Uncle Bob's Clean Architecture concepts.
+:warning:  This is still (and maybe will always be) under development! Any PR is greatly welcome!
 
-I used [awilix](https://github.com/jeffijoe/awilix) to develop a Dependency Injection in this project.
+This project tries to follow the rules of [Uncle Bob's Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
-> It still under development, so things might (and will) change along the way.
-
-## Folder structure
+## Project structure
 ```
 .
 ├── src
-|   ├── application           - Application files. The core of clean architecture
-|   |   ├── business          - Business logic goes here
-|   |   └── entities          - Some interfaces and classes that defines our app.
-|   |       ├── repositories  - Contracts between business and deliveries
-|   |       ├── types         - Application custom types and interfaces
-|   |       └── services      - Features that can be shared through the application
-|   ├── delivery              - Here is located all delivery options
-|   |   └── api               - API delivery. Here comes all API related logic
-|   |       ├── config        - Config folder
-|   |       ├── controllers   - Here lies all controllers
-|   |       ├── middlewares   - Express middlewares goes here
-|   |       ├── routes        - Express routes
-|   |       ├── plugins       - API External plugins, like Lodash
-|   |       ├── schemas       - JSON Schema definitions for input validation
-|   |       ├── index.ts      - API entrypoint
-|   |       └── app.ts        - Here is where all things are glued together
-|   └── external              - Some external dependencies, like databases, libraries, etc
-|       └── repositories      - Contract implementations
-├── test                      - Application tests
+|   ├── app                   - Enterprise business rules
+|   |   ├── core              - Core business rules
+|   |   |   ├── entities      - Interfaces and classes that defines the app.
+|   |   |   └── definitions   - Interfaces and classes complement the app.
+|   |   └── {feat-name}       - Business features
+|   ├── data                  - Interfaces adapters
+|   └── frameworks            - Frameworks and drivers that exposes the app
 └── build                     - Compiled javascript files
 ```
 
+## Install
 
-## Delivery Options
+- Clone the project
+- Install dependencies:
+  - Using yarn
+  ```bash
+  $ yarn install
+  ```
 
-For now there is only one delivery option, which is being exposed as an API for account management.
+  - Using npm
+  ```bash
+  $ npm install
+  ```
 
-- [API DELIVERY DOCS](docs/API.md)
+## Running
 
-## Installing and Running
+- Running the script
+This will run a single node script file and will execute pre-defined methods as an example.
 
-- Using yarn
-```bash
-$ yarn install
-$ yarn start
-```
+  - Using yarn
+  ```bash
+  $ yarn start:script
+  ```
+  - Using npm
+  ```bash
+  $ npm run start:script
+  ```
 
-- Using npm
-```bash
-$ npm install
-$ npm start
-```
+- Running the Rest Server
+This will start an express rest server at localhost:3000. You can use [this example](src/frameworks/api/Example.md) to consume endpoints.
 
-## Testing
+  - Using yarn
+  ```bash
+  $ yarn start:api
+  ```
+  - Using npm
+  ```bash
+  $ npm run start:api
+  ```
 
-Simply run `npm test` or `yarn test`
+## Executing tests
+  - Using yarn
+  ```bash
+  $ yarn test
+  ```
+  - Using npm
+  ```bash
+  $ npm test
+  ```

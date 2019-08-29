@@ -1,8 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "outDir": "build",
     "module": "commonjs",
-    "sourceMap": true,
-    "moduleResolution": "node"
-  }
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true
+  },
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "test-environment.ts"
+  ]
 }
