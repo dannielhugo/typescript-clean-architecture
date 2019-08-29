@@ -39,28 +39,30 @@ This project tries to follow the rules of [Uncle Bob's Clean Architecture](https
 ## Running
 
 - Running the script
-This will run a single node script file and will execute pre-defined methods as an example.
 
-  - Using yarn
-  ```bash
-  $ yarn start:script
-  ```
-  - Using npm
-  ```bash
-  $ npm run start:script
-  ```
+  This will run a single node script file and will execute pre-defined methods as an example.
+
+    - Using yarn
+    ```bash
+    $ yarn start:script
+    ```
+    - Using npm
+    ```bash
+    $ npm run start:script
+    ```
 
 - Running the Rest Server
-This will start an express rest server at localhost:3000. You can use [this example](src/frameworks/api/Example.md) to consume endpoints.
 
-  - Using yarn
-  ```bash
-  $ yarn start:api
-  ```
-  - Using npm
-  ```bash
-  $ npm run start:api
-  ```
+  This will start an express rest server at localhost:3000. You can use [this example](src/frameworks/api/Example.md) to consume endpoints.
+
+    - Using yarn
+    ```bash
+    $ yarn start:api
+    ```
+    - Using npm
+    ```bash
+    $ npm run start:api
+    ```
 
 ## Executing tests
   - Using yarn
